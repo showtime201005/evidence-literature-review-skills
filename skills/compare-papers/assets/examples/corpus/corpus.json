@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "CorpusIndex",
+  "artifact_id": "corpusindex_ae8340fd94d425f16e24c0fd",
+  "payload": {
+    "documents": [
+      {
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "paper_id": "paper_443053ac1197b89d97274465",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "encoding": "utf-8",
+        "source_path": "trial-a.md",
+        "snapshot_path": "sources/8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7.md",
+        "size_bytes": 118,
+        "metadata": {
+          "title": "試驗 A"
+        },
+        "metadata_provenance": {
+          "title": {
+            "origin": "provided_text",
+            "block_id": "block_02666328e0fc965a4f72b14e",
+            "external_verification": "not_checked"
+          }
+        },
+        "source_gaps": [],
+        "role": "main",
+        "version": "not_reported"
+      },
+      {
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "paper_id": "paper_42a3944a455b53063794600f",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "encoding": "utf-8",
+        "source_path": "trial-b.md",
+        "snapshot_path": "sources/2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce.md",
+        "size_bytes": 118,
+        "metadata": {
+          "title": "試驗 B"
+        },
+        "metadata_provenance": {
+          "title": {
+            "origin": "provided_text",
+            "block_id": "block_ad57a61dd311ce30d1aaf392",
+            "external_verification": "not_checked"
+          }
+        },
+        "source_gaps": [],
+        "role": "main",
+        "version": "not_reported"
+      }
+    ],
+    "blocks": [
+      {
+        "block_id": "block_02666328e0fc965a4f72b14e",
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "hash": "c207072b44c62a398c6de59cd07831b6fcfa5d73656aff05f09edece11830e60",
+        "kind": "heading",
+        "section_path": [
+          "試驗 A"
+        ],
+        "start_byte": 0,
+        "end_byte": 11,
+        "start_line": 1,
+        "end_line": 1
+      },
+      {
+        "block_id": "block_4686e2967a6fc633e8e55565",
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "kind": "format",
+        "section_path": [
+          "試驗 A"
+        ],
+        "start_byte": 11,
+        "end_byte": 12,
+        "start_line": 2,
+        "end_line": 2
+      },
+      {
+        "block_id": "block_75415325f9e4d65fde2d5966",
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "hash": "16d6381672aa5ad150072dbb1ce20303a3600467d68581e328d13d86199af87e",
+        "kind": "heading",
+        "section_path": [
+          "試驗 A",
+          "結果"
+        ],
+        "start_byte": 12,
+        "end_byte": 22,
+        "start_line": 3,
+        "end_line": 3
+      },
+      {
+        "block_id": "block_1084f81783d17cddda4af0d5",
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "kind": "format",
+        "section_path": [
+          "試驗 A",
+          "結果"
+        ],
+        "start_byte": 22,
+        "end_byte": 23,
+        "start_line": 4,
+        "end_line": 4
+      },
+      {
+        "block_id": "block_e3e5ddc7eca09dd281c54002",
+        "document_id": "document_b47ef74f953b903937d6c120",
+        "content_hash": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+        "hash": "fcb9ee9c498731e23d795372f6c3b78ac8618a50d5c5eae3020bc093f7c8bd8d",
+        "kind": "body",
+        "section_path": [
+          "試驗 A",
+          "結果"
+        ],
+        "start_byte": 23,
+        "end_byte": 118,
+        "start_line": 5,
+        "end_line": 5
+      },
+      {
+        "block_id": "block_ad57a61dd311ce30d1aaf392",
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "hash": "007f61729ea25637df4ba66ee56613efbce0f8edcfa765c4fb9066626687f32e",
+        "kind": "heading",
+        "section_path": [
+          "試驗 B"
+        ],
+        "start_byte": 0,
+        "end_byte": 11,
+        "start_line": 1,
+        "end_line": 1
+      },
+      {
+        "block_id": "block_e82d217feabafc143dad5e7f",
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "kind": "format",
+        "section_path": [
+          "試驗 B"
+        ],
+        "start_byte": 11,
+        "end_byte": 12,
+        "start_line": 2,
+        "end_line": 2
+      },
+      {
+        "block_id": "block_7ed6bd684c334414a615ba32",
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "hash": "16d6381672aa5ad150072dbb1ce20303a3600467d68581e328d13d86199af87e",
+        "kind": "heading",
+        "section_path": [
+          "試驗 B",
+          "結果"
+        ],
+        "start_byte": 12,
+        "end_byte": 22,
+        "start_line": 3,
+        "end_line": 3
+      },
+      {
+        "block_id": "block_188e8cf4179773c2f22676b0",
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "kind": "format",
+        "section_path": [
+          "試驗 B",
+          "結果"
+        ],
+        "start_byte": 22,
+        "end_byte": 23,
+        "start_line": 4,
+        "end_line": 4
+      },
+      {
+        "block_id": "block_54b8ab4660bd356f04d13c07",
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "hash": "1e059fd2fd9d974fcaaffa55ca265fdfea5bd7077c31e4ba6dcc3a4c21e2a932",
+        "kind": "body",
+        "section_path": [
+          "試驗 B",
+          "結果"
+        ],
+        "start_byte": 23,
+        "end_byte": 118,
+        "start_line": 5,
+        "end_line": 5
+      }
+    ],
+    "dispositions": [
+      {
+        "path": "trial-a.md",
+        "status": "imported",
+        "document_id": "document_b47ef74f953b903937d6c120"
+      },
+      {
+        "path": "trial-b.md",
+        "status": "imported",
+        "document_id": "document_d7e3aa18718719a68070e279"
+      }
+    ],
+    "logical_paper_count": 2,
+    "policy": "corpus_only",
+    "external_lookup": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "artifact_id": "comparisonset_5b56993897e00047f1d6f1b9",
+  "payload_hash": "5b56993897e00047f1d6f1b94dee0e7e6e7a952a171c8c5be46133df0f754443",
+  "schema_version": "2.0.0",
+  "primary": "artifact.json",
+  "human_view": "summary.md",
+  "materials": [
+    {
+      "artifact_id": "claim_0b19a18d073a81b322cd5aff",
+      "artifact_type": "Claim",
+      "path": "materials/74efa8a4f21fecca18cc166641a9f23aeca3524c2f1875ec9c4a535acabaae09.json"
+    },
+    {
+      "artifact_id": "claim_96414913c6d075c2279b6c54",
+      "artifact_type": "Claim",
+      "path": "materials/89f7b9413cfd7ce9500706f8911d010d43a67f82681df55b6db587b13c97b53b.json"
+    },
+    {
+      "artifact_id": "evidence_ca2e340210d890765f5a5f09",
+      "artifact_type": "Evidence",
+      "path": "materials/32313e50fd88e11ba61cb9542f91742fa997d1abefd40e08f01c919285d001a8.json"
+    },
+    {
+      "artifact_id": "evidence_4f2098beaea4980e33514743",
+      "artifact_type": "Evidence",
+      "path": "materials/3afcfb0a8a966169308934f15f438df52084a5da0574d9e2c5bb928801ae9f73.json"
+    }
+  ],
+  "files": {
+    "artifact.json": "7f53458bae43fb328eac8081fd3e89cbdcd22145285a9ac9ba992f51abb01d4a",
+    "corpus/corpus.json": "711cf5946f356ffcb34d924bb05eaed77681e309a8bce6ba9ec79774be57abb5",
+    "corpus/coverage.json": "88a3eb44af9953b7b2cc649e14773190e4dbef6bd0d6b2994984b6523d46bcfe",
+    "corpus/references.json": "4ef450c6a298d9a40341e6eff3d5f14a16591a749daeb0040887a28cf43792b5",
+    "corpus/sources/2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce.md": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+    "corpus/sources/8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7.md": "8e202e89ccd605d4ec644d95d3c3bc8e89e599903af563fa93a9ed7dea49b0a7",
+    "materials/32313e50fd88e11ba61cb9542f91742fa997d1abefd40e08f01c919285d001a8.json": "963a343d389501853dd6ede557a9fc25e81e8d3086f5ce84b702afbd660e4ce2",
+    "materials/3afcfb0a8a966169308934f15f438df52084a5da0574d9e2c5bb928801ae9f73.json": "588d479a526612a5a5deb437f4f8eb47459687a980f04b88c2267548a59bb19d",
+    "materials/74efa8a4f21fecca18cc166641a9f23aeca3524c2f1875ec9c4a535acabaae09.json": "eacdd0a955e13bc42bd77a1a3a47880f4cef7c371e9d08a639fc069d8d14a2bc",
+    "materials/89f7b9413cfd7ce9500706f8911d010d43a67f82681df55b6db587b13c97b53b.json": "0e2983f3fcc1b14b249dff8992c96f19c2bc3adbad5f93c4c7984aa71ea2b0c2",
+    "summary.md": "acadc9d855b3928d633e8e2259046c615ca517e2ffb5e692451ca0cf094617c2"
+  },
+  "unresolved_refs": [],
+  "source_snapshot_included": true,
+  "readiness": "structurally_packaged",
+  "quality": "unverified",
+  "edit_policy": "Do not edit generated projections. Import a human edit as a new report and independently reverify it."
+}

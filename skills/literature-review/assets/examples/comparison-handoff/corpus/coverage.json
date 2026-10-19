@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "CoverageSet",
+  "artifact_id": "coverageset_5c5496261937c6673f941870",
+  "payload": {
+    "records": [
+      {
+        "coverage_id": "coverage_a0956e38b8592f1ab6382fae",
+        "block_id": "block_02666328e0fc965a4f72b14e",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      },
+      {
+        "coverage_id": "coverage_7018e05c91a129bf1a41ca6d",
+        "block_id": "block_75415325f9e4d65fde2d5966",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      },
+      {
+        "coverage_id": "coverage_0b5ce43b9c5b3256702ed055",
+        "block_id": "block_e3e5ddc7eca09dd281c54002",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      },
+      {
+        "coverage_id": "coverage_784f1ef6ab2be8a382e028fd",
+        "block_id": "block_ad57a61dd311ce30d1aaf392",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      },
+      {
+        "coverage_id": "coverage_d3e423f7157f72bfb2f948bb",
+        "block_id": "block_7ed6bd684c334414a615ba32",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      },
+      {
+        "coverage_id": "coverage_c748eda0048f59701973ff5a",
+        "block_id": "block_54b8ab4660bd356f04d13c07",
+        "task_id": "not_assigned",
+        "artifact_refs": [],
+        "layer": "analysis",
+        "status": "pending"
+      }
+    ],
+    "execution": "partial",
+    "quality": "unverified"
+  }
+}

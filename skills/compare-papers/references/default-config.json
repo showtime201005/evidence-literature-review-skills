@@ -1,0 +1,11 @@
+{
+  "source_policy": "corpus_only",
+  "external_lookup": false,
+  "max_papers": 100,
+  "depth": "standard",
+  "research_question": "比較提供文本中的研究問題、方法、結果與適用限制",
+  "completion_priority": "full_corpus",
+  "deadline_mode": "soft",
+  "max_workers": 4,
+  "max_repair_rounds": 2
+}

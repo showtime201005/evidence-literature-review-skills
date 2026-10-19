@@ -1,0 +1,13 @@
+interface:
+  display_name: Write Review
+  short_description: Write corpus-only reviews with mapped claims
+  default_prompt: Use $write-review on the provided local literature materials.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

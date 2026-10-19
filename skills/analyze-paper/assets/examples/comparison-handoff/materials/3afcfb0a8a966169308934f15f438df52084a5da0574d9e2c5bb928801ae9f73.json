@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "Evidence",
+  "artifact_id": "evidence_4f2098beaea4980e33514743",
+  "payload": {
+    "evidence_id": "evidence_7d84d9b093d996ec2b916ee4",
+    "spans": [
+      {
+        "document_id": "document_d7e3aa18718719a68070e279",
+        "content_hash": "2be5142e7138a078aa728da18fdb53da182867dc1066b410da51179be08364ce",
+        "start_byte": 23,
+        "end_byte": 118,
+        "excerpt": "在資料集 Y，方法 A 的準確率為 84%，基準 C 為 82%；未提供顯著性檢定。\n"
+      }
+    ],
+    "excerpt": "在資料集 Y，方法 A 的準確率為 84%，基準 C 為 82%；未提供顯著性檢定。\n",
+    "source_role": "author_result"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "review",
+  "questions": [
+    {
+      "question_id": "effectiveness",
+      "text": "提供文獻中的方法效果、反證及適用限制為何？",
+      "terms": ["accuracy", "effectiveness", "limitation", "準確率", "限制"]
+    }
+  ]
+}

@@ -29,6 +29,6 @@
 - 207 項回歸全通過；五個 skills 的兩套框架入口診斷共 10 次成功。
 - 原生 CLI／SDK 的載入、讀檔、Python 與子代理整合使用 scripted provider 測試。
 - 當前模型對三篇合成文獻的回顧，27 個主張、23 份證據、9 個來源分片及獨立整份審核通過。
-- 尚未驗收公司 Qwen 或其他真實 provider 在兩套框架內的研究品質；未人工學術複核；100 篇只測機械負載。
+- 尚未驗收真實 provider 在兩套框架內的研究品質；未人工學術複核；100 篇只測機械負載。
 
-詳見 [驗收紀錄](docs/acceptance-v06.zh-TW.md)、[原生入口](docs/native-harness-guide-v06.zh-TW.md)。`examples/verified-review/` 是合成示範，不能作為真實研究證據。
+詳見 [驗收紀錄](docs/validation-summary.md)、[原生入口](docs/native-harness-guide-v06.zh-TW.md)。`examples/papers/` 是合成資料，不能作為真實研究證據。

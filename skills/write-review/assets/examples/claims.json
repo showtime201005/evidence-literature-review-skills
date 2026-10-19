@@ -1,0 +1,34 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "artifact_type": "Claim",
+    "artifact_id": "claim_0b19a18d073a81b322cd5aff",
+    "payload": {
+      "claim_id": "example-claim-1",
+      "text": "在資料集 X，方法 A 的準確率為 81%，基準 B 為 80%；差異未達統計顯著。",
+      "claim_type": "source_fact",
+      "evidence_refs": [
+        "evidence_b5677915f4d409da46d87d34"
+      ],
+      "support_status": "unverified",
+      "field": "results",
+      "paper_id": "paper_443053ac1197b89d97274465"
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "artifact_type": "Claim",
+    "artifact_id": "claim_96414913c6d075c2279b6c54",
+    "payload": {
+      "claim_id": "example-claim-2",
+      "text": "在資料集 Y，方法 A 的準確率為 84%，基準 C 為 82%；未提供顯著性檢定。",
+      "claim_type": "source_fact",
+      "evidence_refs": [
+        "evidence_7d84d9b093d996ec2b916ee4"
+      ],
+      "support_status": "unverified",
+      "field": "results",
+      "paper_id": "paper_42a3944a455b53063794600f"
+    }
+  }
+]

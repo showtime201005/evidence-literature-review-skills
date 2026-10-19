@@ -1,0 +1,30 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_type": "TaskResult",
+  "artifact_id": "taskresult_7c02967ed61498a21a8bce9a",
+  "payload": {
+    "task_id": "example-task",
+    "status": "needs_input",
+    "quality": "unverified",
+    "artifact_refs": [],
+    "source_hashes": [],
+    "issues": [
+      {
+        "code": "NEEDS_EXTRACTION",
+        "severity": "blocker",
+        "message": "樣本量未擷取，不能判定原文未報告。",
+        "required_input": [
+          "針對樣本量完成原文閱讀與擷取，或明確缺失判定"
+        ],
+        "owner": "reader",
+        "retryable": true,
+        "affected_refs": [
+          "paper_443053ac1197b89d97274465"
+        ]
+      }
+    ]
+  },
+  "producer": {
+    "context_id": "example-reader"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Illustrative fixtures built by code; no actual model reading or verification performed.",
+  "primary_files": [
+    "analysis-1.json",
+    "analysis-2.json",
+    "comparison.json",
+    "sections.json",
+    "draft.json",
+    "needs-input.json"
+  ],
+  "sources": "papers/",
+  "human_view": "comparison-handoff/summary.md",
+  "verification": "not_performed; no golden verifier answers shipped"
+}

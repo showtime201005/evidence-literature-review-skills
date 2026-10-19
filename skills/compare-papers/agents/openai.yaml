@@ -1,0 +1,13 @@
+interface:
+  display_name: Compare Papers
+  short_description: Compare studies with conditions and counterevidence
+  default_prompt: Use $compare-papers on the provided local literature materials.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
