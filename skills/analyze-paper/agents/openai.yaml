@@ -1,0 +1,13 @@
+interface:
+  display_name: Analyze Paper
+  short_description: Read every source block with traceable evidence
+  default_prompt: Use $analyze-paper on the provided local literature materials.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

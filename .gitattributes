@@ -1,0 +1,3 @@
+# Preserve the exact bytes recorded in handoff and installation manifests.
+* -text
+*.zip binary

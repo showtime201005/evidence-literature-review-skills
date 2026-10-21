@@ -1,0 +1,229 @@
+{
+  "schema": "schema-snapshot-status/1",
+  "checked_utc": "2026-10-21T00:22:14.787548+00:00",
+  "snapshot_path": "docs/evidence/skill-interface-schemas-20261021.json",
+  "snapshot_sha256": "7c325c404dcffc85114a2749c810282646730084ecac60b75f8bf33887be5ba7",
+  "snapshot_created_utc": "2026-10-20T19:47:50.613943+00:00",
+  "operation": "Read-only model_json_schema/helper generation and source hash comparison; no runtime mutation, tests or API calls.",
+  "schema_count": 13,
+  "schemas_all_equal": false,
+  "source_hashes_all_equal": false,
+  "source_files": [
+    {
+      "path": "scripts/install_skills.py",
+      "snapshot_sha256": "15b85837475277083d118d93b680e5df42d0c93fa4cb530dc16e7d2bcaa11945",
+      "current_sha256": "b78413751a70f5cee25892a1e16f2eca8754a9b886f8e7ad23032ecbb20dd788",
+      "matches": false
+    },
+    {
+      "path": "skills/literature-review/scripts/install_skills.py",
+      "snapshot_sha256": "ca188f4e57a757e86c5d254f17964b617e50446c9feb3a60af98674929df3d7e",
+      "current_sha256": "5fcc60ed6ee72c12d025b284aee91bbd1a4a4e6926994490c7d5adc35a7f8679",
+      "matches": false
+    },
+    {
+      "path": "skills/analyze-paper/SKILL.md",
+      "snapshot_sha256": "e6b2d852ef72a9f318953c42ae0adecf2076d883ea8eea873f6bf3c7f4df748a",
+      "current_sha256": "e6b2d852ef72a9f318953c42ae0adecf2076d883ea8eea873f6bf3c7f4df748a",
+      "matches": true
+    },
+    {
+      "path": "skills/compare-papers/SKILL.md",
+      "snapshot_sha256": "94a1432dc4b148d593ea0a71c07e2adac457e62030a2aa4fa2f0e9ae3dd14c6e",
+      "current_sha256": "94a1432dc4b148d593ea0a71c07e2adac457e62030a2aa4fa2f0e9ae3dd14c6e",
+      "matches": true
+    },
+    {
+      "path": "skills/write-review/SKILL.md",
+      "snapshot_sha256": "15c0c95b91ee6e873236a93edbac1bf03a785b31bc0f8312ae9b39c284028b7e",
+      "current_sha256": "15c0c95b91ee6e873236a93edbac1bf03a785b31bc0f8312ae9b39c284028b7e",
+      "matches": true
+    },
+    {
+      "path": "skills/verify-citations/SKILL.md",
+      "snapshot_sha256": "63af3fa0b3f5ee3a40655ba7c51fe8efb0700351ef11e0c49abb0e7c52373ba3",
+      "current_sha256": "63af3fa0b3f5ee3a40655ba7c51fe8efb0700351ef11e0c49abb0e7c52373ba3",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/SKILL.md",
+      "snapshot_sha256": "857f7776eaf7e02b033f204b76c205991a85a88021ee369da3895e76091d2e74",
+      "current_sha256": "857f7776eaf7e02b033f204b76c205991a85a88021ee369da3895e76091d2e74",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/native_task.py",
+      "snapshot_sha256": "2226398baf493ad82c6141db8c08118d63ebd2e4d27cc629c60a7b343113b0ae",
+      "current_sha256": "2226398baf493ad82c6141db8c08118d63ebd2e4d27cc629c60a7b343113b0ae",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/native_review.py",
+      "snapshot_sha256": "8579f25899f552277ab7a8ad882fd814457d10d1db366fcad25b2df2ccc3b271",
+      "current_sha256": "8579f25899f552277ab7a8ad882fd814457d10d1db366fcad25b2df2ccc3b271",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/scientific_records.py",
+      "snapshot_sha256": "76353c51e504377aa0fe58f92944fb6568066770c8411f262e925ee747a8b79a",
+      "current_sha256": "76353c51e504377aa0fe58f92944fb6568066770c8411f262e925ee747a8b79a",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/draft_worker.py",
+      "snapshot_sha256": "a1206cc9fd14b222aedfdb003c619557e49ed144557e974cfc5db9d4deb94c01",
+      "current_sha256": "54ae5c7c2d91a784027e13f42c3f51b60595c061e6f4087d0312767918a2afa7",
+      "matches": false
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/draft_submission_wire.py",
+      "snapshot_sha256": "565b37928475a842a26cf7f812e00ea2142669a8608a7f9bbba540b6f074fcd5",
+      "current_sha256": "565b37928475a842a26cf7f812e00ea2142669a8608a7f9bbba540b6f074fcd5",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/review_artifacts.py",
+      "snapshot_sha256": "003a029c3d92d001cb060a5cdd1dafcdb36f07bf3e9d5af184e9cc6c5728c1f1",
+      "current_sha256": "0e1535ad1a83217247874861d18cfffecab3e165f7d9d182bf56446e4c0eee01",
+      "matches": false
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/proof_worker.py",
+      "snapshot_sha256": "21c955e8c9a49aa359691214d7d8cfa173d22a5859abc30d6e7f1d97adb16ea8",
+      "current_sha256": "21c955e8c9a49aa359691214d7d8cfa173d22a5859abc30d6e7f1d97adb16ea8",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/paper_review_v2.py",
+      "snapshot_sha256": "a6fc154ecf17138eac7f36047f2fe0b8315912a5ebd7406822db6031938da107",
+      "current_sha256": "d385af9facfaa3ecf389d13c8f82a30ae4c4ace921cc145f2bd3822f7b8b1e56",
+      "matches": false
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/section_review_v2.py",
+      "snapshot_sha256": "dd7d0f9205a8e049d79403bb3fe15254238082bd29ac52f619442cdaa61c1519",
+      "current_sha256": "dd7d0f9205a8e049d79403bb3fe15254238082bd29ac52f619442cdaa61c1519",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/closed_scientific_checks.py",
+      "snapshot_sha256": "f625f3175afb5487575e39c33faa5aab085f3ea38fcd2e350e559be3215a1393",
+      "current_sha256": "f625f3175afb5487575e39c33faa5aab085f3ea38fcd2e350e559be3215a1393",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/review_observation_selectors.py",
+      "snapshot_sha256": "87ef3d2d4032d07fca25bc1bfdd6f915dc2df581d402c12b7b5735b3674f9b56",
+      "current_sha256": "87ef3d2d4032d07fca25bc1bfdd6f915dc2df581d402c12b7b5735b3674f9b56",
+      "matches": true
+    },
+    {
+      "path": "skills/literature-review/scripts/runtime/litreview_core/native_agent.py",
+      "snapshot_sha256": "af4fc92ba5ee8e9f8f570d90d2d997e9d0b05667848aa78bbf80f06c0c54fb0e",
+      "current_sha256": "af4fc92ba5ee8e9f8f570d90d2d997e9d0b05667848aa78bbf80f06c0c54fb0e",
+      "matches": true
+    }
+  ],
+  "schemas": [
+    {
+      "name": "ReaderSubmission",
+      "matches": true,
+      "snapshot_schema_sha256": "ea0bad347690c5c9ba5f7d9d48fdfe2f785dfe257537847647b8eb6c5b1e127f",
+      "current_schema_sha256": "ea0bad347690c5c9ba5f7d9d48fdfe2f785dfe257537847647b8eb6c5b1e127f"
+    },
+    {
+      "name": "DraftSubmission",
+      "matches": true,
+      "snapshot_schema_sha256": "4b849e66cba0f67bfc5a5aa1754bbde74fd724ef81f8e1659b6f937829fb36f2",
+      "current_schema_sha256": "4b849e66cba0f67bfc5a5aa1754bbde74fd724ef81f8e1659b6f937829fb36f2"
+    },
+    {
+      "name": "GroupedDraftSubmission",
+      "matches": true,
+      "snapshot_schema_sha256": "54feac5057d4da366c1543ad565973197251789f21de942dd1ddf4f79ee9e870",
+      "current_schema_sha256": "54feac5057d4da366c1543ad565973197251789f21de942dd1ddf4f79ee9e870"
+    },
+    {
+      "name": "ProofSubmission",
+      "matches": true,
+      "snapshot_schema_sha256": "31b8e8ba035e1c5141e3a19836057d37fbe0988a1c0e99ea9a8d8f399f53f55c",
+      "current_schema_sha256": "31b8e8ba035e1c5141e3a19836057d37fbe0988a1c0e99ea9a8d8f399f53f55c"
+    },
+    {
+      "name": "ProofArguments",
+      "matches": true,
+      "snapshot_schema_sha256": "7e6bb73903564b5a708944f540784583d827f0f8dea342f82106d192e7f62632",
+      "current_schema_sha256": "7e6bb73903564b5a708944f540784583d827f0f8dea342f82106d192e7f62632"
+    },
+    {
+      "name": "PaperReviewSubmissionV2",
+      "matches": true,
+      "snapshot_schema_sha256": "39588b2cff2b3abbcfff556ddeac17c08ad742abe41ecf13fe655e02fef8feb3",
+      "current_schema_sha256": "39588b2cff2b3abbcfff556ddeac17c08ad742abe41ecf13fe655e02fef8feb3"
+    },
+    {
+      "name": "SectionReviewSubmissionV2",
+      "matches": true,
+      "snapshot_schema_sha256": "7633f1fcbb90adacd442582be906a5ed3c7ec6f501aa65d3565a4946fc4983da",
+      "current_schema_sha256": "7633f1fcbb90adacd442582be906a5ed3c7ec6f501aa65d3565a4946fc4983da"
+    },
+    {
+      "name": "ClosedSubmission",
+      "matches": true,
+      "snapshot_schema_sha256": "ac6abcd74bc2c1deee6e76db73efd86074ad70b96ac28968b36682f79bc91a3a",
+      "current_schema_sha256": "ac6abcd74bc2c1deee6e76db73efd86074ad70b96ac28968b36682f79bc91a3a"
+    },
+    {
+      "name": "reader_submit_tool_arguments",
+      "matches": true,
+      "snapshot_schema_sha256": "83bc6d0edd38aa64bedb13256b56f15f6a16a66e82a38f2fed41e27363a1c403",
+      "current_schema_sha256": "83bc6d0edd38aa64bedb13256b56f15f6a16a66e82a38f2fed41e27363a1c403"
+    },
+    {
+      "name": "paper_card_grouped_tool_arguments",
+      "matches": false,
+      "snapshot_schema_sha256": "f2aa9da4372020204ebdcc4b595f08c6ae23ecce46bea9011031995edbd147aa",
+      "current_schema_sha256": "3ae3087fdb33824e2c03357ba2f4fca58c90e4b355816fe98e440d047f011c4e",
+      "differences": [
+        {
+          "json_pointer": "/additionalProperties",
+          "snapshot": "absent",
+          "current": false,
+          "interpretation": "Actual draft_worker advertised root tool schema now explicitly rejects additional properties; all other nested schema content matches."
+        }
+      ]
+    },
+    {
+      "name": "comparison_or_synthesis_grouped_tool_arguments",
+      "matches": false,
+      "snapshot_schema_sha256": "05408f09b9f415c9ae8c2cfb7e6254751f5a3eb176fecb3d2af762d34ecceefe",
+      "current_schema_sha256": "b89e258610a04fed5b5ecec6484f0bb8843fd38fa4f75a33647e8f2332168dd0",
+      "differences": [
+        {
+          "json_pointer": "/additionalProperties",
+          "snapshot": "absent",
+          "current": false,
+          "interpretation": "Actual draft_worker advertised root tool schema now explicitly rejects additional properties; all other nested schema content matches."
+        }
+      ]
+    },
+    {
+      "name": "paper_whole_unit_submission",
+      "matches": true,
+      "snapshot_schema_sha256": "ea8ab291db054264e9a32108f46116a8af01e0240f1fee4ddfd439cd1ffd6cc0",
+      "current_schema_sha256": "ea8ab291db054264e9a32108f46116a8af01e0240f1fee4ddfd439cd1ffd6cc0"
+    },
+    {
+      "name": "section_whole_unit_submission",
+      "matches": true,
+      "snapshot_schema_sha256": "0c1475c3809deeaed5b7582e9efd6bf0bbb4b04a5c11f66461b5908f90e271eb",
+      "current_schema_sha256": "0c1475c3809deeaed5b7582e9efd6bf0bbb4b04a5c11f66461b5908f90e271eb"
+    }
+  ],
+  "scope_limits": [
+    "Equality checks the 13 saved static submission/schema exports, not packet-specific closed-check tool enums.",
+    "Unchanged JSON schemas do not establish unchanged prompts or runtime behavior.",
+    "Source hash drift is retained separately from schema content equality."
+  ],
+  "paid_calls": 0
+}

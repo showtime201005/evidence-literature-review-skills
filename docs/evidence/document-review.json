@@ -1,0 +1,42 @@
+{
+  "schema": "handoff-document-static-review/1",
+  "passed": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3165,
+      "sha256": "b9a11a8506fcd2cbad0a689f871ece6a94ec83685100686418e641cef4880c4a",
+      "links_checked": 9
+    },
+    {
+      "path": "INSTALL.md",
+      "bytes": 10004,
+      "sha256": "5f225325d65bf3f77aa7ac865f44dc1e90bd4ba64c4b21ba8640cfcff8cdb518",
+      "links_checked": 2
+    },
+    {
+      "path": "docs/PACKAGE-README.zh-TW.md",
+      "bytes": 2461,
+      "sha256": "851fe54035495c5baded87fa16a8b060fdf8b323e367fa20bf19a73ca69b4634",
+      "links_checked": 5
+    },
+    {
+      "path": "docs/HANDOFF-2026-10-21.zh-TW.md",
+      "bytes": 26233,
+      "sha256": "ef1ecba426c543d06dd92c4f24bfe12cf0d4ff69d6e64b0a771069dfdce50b20",
+      "links_checked": 12
+    },
+    {
+      "path": "docs/implementation-guide.zh-TW.html",
+      "bytes": 68831,
+      "sha256": "c92cc41fcb1c09a3de4b70642eb13870bb984018726c977733b0a27c480ef7af",
+      "links_checked": 56
+    }
+  ],
+  "errors": [],
+  "pending_generated_dist_links": [],
+  "network_calls": 0,
+  "model_calls": 0,
+  "browser_visual_review": "not_performed_no_available_browser",
+  "scope": "UTF-8, replacement characters, local file links, HTML anchors, duplicate IDs, external asset dependencies, five skill names; not functional or scientific acceptance"
+}

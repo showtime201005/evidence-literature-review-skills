@@ -1,0 +1,83 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_type": "PaperAnalysis",
+  "artifact_id": "paperanalysis_37ceda26bd5fa020a143e593",
+  "payload": {
+    "paper_id": "paper_443053ac1197b89d97274465",
+    "paper_type": "empirical",
+    "analysis_profile": "example-only",
+    "fields": {
+      "research_question": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "contributions": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "method": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "evaluation": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "results": {
+        "status": "reported",
+        "text": "在資料集 X，方法 A 的準確率為 81%，基準 B 為 80%；差異未達統計顯著。",
+        "claim_refs": [
+          "example-claim-1"
+        ],
+        "reason": "Program-built illustrative extraction; not a real reader evaluation.",
+        "checked_part_ids": []
+      },
+      "limitations": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "conditions": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "relevance": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      },
+      "unexpected_findings": {
+        "status": "not_extracted",
+        "text": "",
+        "claim_refs": [],
+        "reason": "Illustrative example: not extracted, not an absence claim.",
+        "checked_part_ids": []
+      }
+    },
+    "claim_refs": [
+      "example-claim-1"
+    ],
+    "coverage_refs": [],
+    "checked_part_ids": [],
+    "extraction_quality": "unverified"
+  }
+}

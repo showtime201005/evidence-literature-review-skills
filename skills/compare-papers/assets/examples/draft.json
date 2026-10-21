@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "ReviewDraft",
+  "artifact_id": "reviewdraft_623d1c56ed39f0968b1edc21",
+  "payload": {
+    "text": "## 研究結果與限制\n\n在資料集 X，方法 A 的準確率為 81%，基準 B 為 80%；差異未達統計顯著。 {{evidence:evidence_b5677915f4d409da46d87d34}}\n\n在資料集 Y，方法 A 的準確率為 84%，基準 C 為 82%；未提供顯著性檢定。 {{evidence:evidence_7d84d9b093d996ec2b916ee4}}\n\n",
+    "claims": [
+      {
+        "claim_id": "example-claim-1",
+        "text": "在資料集 X，方法 A 的準確率為 81%，基準 B 為 80%；差異未達統計顯著。",
+        "claim_type": "source_fact",
+        "evidence_refs": [
+          "evidence_b5677915f4d409da46d87d34"
+        ],
+        "support_status": "unverified",
+        "field": "results",
+        "paper_id": "paper_443053ac1197b89d97274465"
+      },
+      {
+        "claim_id": "example-claim-2",
+        "text": "在資料集 Y，方法 A 的準確率為 84%，基準 C 為 82%；未提供顯著性檢定。",
+        "claim_type": "source_fact",
+        "evidence_refs": [
+          "evidence_7d84d9b093d996ec2b916ee4"
+        ],
+        "support_status": "unverified",
+        "field": "results",
+        "paper_id": "paper_42a3944a455b53063794600f"
+      }
+    ],
+    "claim_mappings": [
+      {
+        "claim_id": "example-claim-1",
+        "start_char": 12,
+        "end_char": 54
+      },
+      {
+        "claim_id": "example-claim-2",
+        "start_char": 103,
+        "end_char": 145
+      }
+    ],
+    "citation_map": {},
+    "scan_status": "not_checked",
+    "paper_sections": {},
+    "scope": "corpus_only"
+  },
+  "producer": {
+    "context_id": "example-writer-not-a-real-model-run",
+    "role": "writer"
+  }
+}

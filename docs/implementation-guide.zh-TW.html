@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Evidence Literature Review Skills：五項技能、DeepAgents 原生架構、操作介面、追溯設計及實測限制。離線繁體中文技術介紹。">
+<title>文獻回顧 Skills｜實作與操作指南</title>
+<style>
+:root{--ink:#162a3d;--muted:#566a7b;--blue:#145e85;--teal:#087d75;--pale:#eaf5f5;--line:#dbe5ec;--paper:#fff;--bg:#f3f6f9;--amber:#8a5a09;--amber-bg:#fff7e7;--red:#a0303e;--red-bg:#fff0f1;--mono:Consolas,"SFMono-Regular",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 system-ui,-apple-system,"Segoe UI","Microsoft JhengHei","Noto Sans CJK TC",sans-serif}a{color:var(--blue);text-underline-offset:3px}a:hover{color:var(--teal)}button{font:inherit;cursor:pointer}aside{position:fixed;inset:0 auto 0 0;width:258px;background:#102b40;color:#dbe9f2;padding:28px 21px;overflow:auto}aside .brand{color:#fff;font-size:19px;font-weight:750;line-height:1.45;margin-bottom:12px}aside .version{font-size:12px;letter-spacing:1.3px;color:#93b4ca;margin-bottom:23px}aside nav a{display:block;color:#c8dce9;text-decoration:none;font-size:13px;padding:7px 10px;margin:2px 0;border-radius:5px}aside nav a:hover,aside nav a.active{background:#24465e;color:#fff}aside footer{border-top:1px solid #315065;margin-top:25px;padding-top:15px;font-size:12px;color:#9cb5c7;line-height:1.8}main{margin-left:258px;max-width:1450px;padding:38px 5vw 72px}.topline{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px;font-size:12px;color:var(--muted)}.print{border:1px solid #bfd0dc;border-radius:6px;background:#fff;padding:6px 14px;color:var(--ink)}header.hero{background:linear-gradient(120deg,#153c57,#086e73);color:#fff;padding:42px 42px 34px;border-radius:12px;position:relative;overflow:hidden}header.hero:after{content:"";position:absolute;right:-80px;top:-120px;width:350px;height:350px;border:55px solid #ffffff0a;border-radius:50%;pointer-events:none}.eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#b4e7e5}.hero h1{font-size:clamp(29px,3.3vw,45px);line-height:1.35;margin:13px 0 18px;letter-spacing:-.6px}.hero p{max-width:820px;color:#e3f0f4;margin:0}.hero .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:23px}.hero .tags span{font-size:12px;padding:4px 10px;border:1px solid #ffffff42;border-radius:4px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0 28px}.stat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:19px}.stat strong{display:block;font-size:26px;line-height:1.4;color:var(--blue)}.stat span{font-size:12px;color:var(--muted)}section{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:30px 34px;margin:22px 0;scroll-margin-top:22px}h2{font-size:25px;line-height:1.45;margin:0 0 20px}h2 .n{display:inline-block;color:var(--teal);font:700 14px/1 var(--mono);margin-right:11px;vertical-align:middle}h3{font-size:19px;line-height:1.55;margin:26px 0 10px}h4{font-size:16px;margin:21px 0 8px}p{margin:10px 0 15px}ul,ol{margin:10px 0 18px;padding-left:25px}li{margin:5px 0}.lead{font-size:18px;line-height:1.9}.muted,.small{color:var(--muted)}.small{font-size:13px}.callout{padding:16px 20px;border-radius:6px;border-left:4px solid var(--teal);background:var(--pale);margin:18px 0}.callout.warning{background:var(--amber-bg);border-color:#b8801b}.callout.danger{background:var(--red-bg);border-color:var(--red)}.callout p:last-child{margin-bottom:0}.callout strong{font-weight:750}.pill{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;line-height:1.9;white-space:nowrap;background:#e5eef6;color:#25516e}.pill.exp{background:#fff0d6;color:var(--amber)}.pill.no{background:#fde6e9;color:var(--red)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid var(--line);padding:18px 20px;border-radius:7px}.panel h3{margin-top:0}.table-wrap{overflow-x:auto;margin:14px 0 20px}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.7}th,td{padding:12px 13px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}th{background:#edf3f7;font-size:12px;letter-spacing:.2px;color:#315368}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafcfd}td code{word-break:break-word}code{font-family:var(--mono);font-size:.86em;background:#edf2f6;padding:2px 5px;border-radius:3px}pre{position:relative;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2;margin:12px 0 18px;padding:20px 22px;background:#102b40;color:#e4f0f5;border-radius:7px;font:12.5px/1.85 var(--mono)}pre code{font:inherit;background:transparent;padding:0;color:inherit}.caption{font-size:12px;color:var(--muted);margin:6px 0 12px}.schema{border-left:3px solid #86a8bc}.skill{border-top:1px solid var(--line);margin-top:25px;padding-top:6px}.skill:first-of-type{border-top:0}.skill-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.skill-head h3{margin-bottom:9px}.skill-head .role{font:12px var(--mono);color:var(--teal)}details{border:1px solid var(--line);border-radius:6px;margin:13px 0}summary{cursor:pointer;padding:12px 16px;font-weight:650;background:#f7fafc}details>div{padding:2px 18px 12px}figure{margin:18px 0}.diagram{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#f8fbfd;padding:13px}svg{display:block;width:100%;min-width:850px;height:auto}figcaption{font-size:12px;color:var(--muted);padding:9px 3px}.timeline{border-left:2px solid #a8c5d4;padding-left:20px;margin-left:4px}.timeline article{position:relative;margin:0 0 20px}.timeline article:before{content:"";width:9px;height:9px;background:var(--teal);border:3px solid #fff;border-radius:50%;position:absolute;left:-28px;top:9px}.timeline h3{margin:0 0 7px}.flag{font-family:var(--mono);font-size:12px;word-break:break-word}.footer{font-size:12px;color:var(--muted);padding:10px 4px}.statusline{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.source-list{font-size:13px;columns:2;column-gap:35px}.source-list li{break-inside:avoid;margin-bottom:8px}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #df9f32;outline-offset:3px}.skip{position:absolute;left:-9999px;top:8px}.skip:focus{left:270px;z-index:5;background:#fff;padding:10px}
+@media(min-width:1550px){main{padding-left:70px;padding-right:70px}}@media(max-width:1050px){aside{width:220px;padding:23px 14px}main{margin-left:220px;padding:28px 25px}.stats{grid-template-columns:repeat(2,1fr)}section{padding:25px}header.hero{padding:32px}}@media(max-width:760px){aside{position:static;width:auto;padding:18px}aside .brand{font-size:18px;margin-bottom:5px}aside .version,aside footer{display:none}aside nav{display:flex;overflow-x:auto;margin-top:10px}aside nav a{white-space:nowrap;flex-shrink:0}main{margin:0;padding:20px 14px}.topline{margin-bottom:15px}.grid2{grid-template-columns:1fr}section{padding:23px 18px}.hero h1{font-size:30px}header.hero{padding:27px 23px}.stat{padding:14px}.stat strong{font-size:23px}h2{font-size:23px}.source-list{columns:1}pre{padding:15px;font-size:11.5px}}
+@media print{@page{size:A4;margin:17mm 15mm}html{scroll-behavior:auto}body{background:#fff;font-size:10pt;line-height:1.65;color:#152b3d}aside,.topline,.skip{display:none}main{margin:0;padding:0;max-width:none}header.hero{background:#173f57!important;color:#fff!important;padding:24px;border-radius:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}.hero h1{font-size:26pt}.hero p{color:#fff}.hero:after{display:none}section{border:0;border-top:1px solid #b9cad5;border-radius:0;margin:20px 0 0;padding:18px 0 0;break-before:auto}h2{font-size:17pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}h4{break-after:avoid}p,li{orphans:3;widows:3}pre{background:#f1f5f7!important;color:#132c3e!important;border:1px solid #c9d6df;font-size:8pt;break-inside:avoid}pre code{color:inherit}table{font-size:8.6pt}thead{display:table-header-group}tr{break-inside:avoid}th{background:#edf3f7!important;print-color-adjust:exact}.stats{grid-template-columns:repeat(4,1fr);gap:8px}.stat{padding:10px;break-inside:avoid}.stat strong{font-size:19pt}.grid2{display:block}.panel{margin:9px 0;break-inside:avoid}.callout{break-inside:avoid;print-color-adjust:exact}details{break-inside:auto}details>div{display:block!important}summary{display:block}figure{break-inside:avoid}svg{min-width:0}.diagram{padding:5px;overflow:visible}.source-list{columns:1}a{color:inherit;text-decoration:none}.footer{font-size:8pt}}
+</style>
+</head>
+<body>
+<a class="skip" href="#overview">跳至主要內容</a>
+<aside aria-label="文件導覽">
+  <div class="brand">Evidence Literature<br>Review Skills</div>
+  <div class="version">IMPLEMENTATION GUIDE · 2026.10</div>
+  <nav>
+    <a href="#overview">01　目標與目前狀態</a>
+    <a href="#protocols">02　三條執行路線</a>
+    <a href="#architecture">03　真實代理與責任圖</a>
+    <a href="#skills">04　五項 skills 與介面</a>
+    <a href="#setup">05　Windows／Ubuntu 設置</a>
+    <a href="#commands">06　獨立任務與完整流程</a>
+    <a href="#design">07　關鍵實作設計</a>
+    <a href="#capacity">08　Context 與系統負載</a>
+    <a href="#repair">09　修訂與失敗處理</a>
+    <a href="#delivery">10　交付、追溯與品質旗標</a>
+    <a href="#evidence">11　實測結果與限制</a>
+    <a href="#roadmap">12　後續計畫與程式索引</a>
+  </nav>
+  <footer>單檔離線文件<br>繁體中文 · 無 CDN／外部字型<br>說明目前實作，不代表品質認證。</footer>
+</aside>
+<main>
+  <div class="topline"><span>技術介紹／同事交接用　｜　實作核對日期：2026-10-21</span><button class="print" type="button" onclick="window.print()">列印／另存 PDF</button></div>
+  <header class="hero">
+    <div class="eyebrow">FULL SOURCES · TRACEABLE CLAIMS · INDEPENDENT REVIEW</div>
+    <h1>讓文獻回顧可執行、<br>可查核，也能誠實地失敗。</h1>
+    <p>以五項可獨立使用的 skills，搭配真正的 DeepAgents 子代理、不可變來源封包與獨立科學審查，完成全文閱讀、證據卡、比較及分層綜合。這份指南說明目前程式如何運作、如何啟動，以及尚未解決的品質與效率問題。</p>
+    <div class="tags"><span>DeepAgents 0.7.15 原生入口</span><span>Qwen3.8-27B／OpenRouter</span><span>單請求最多 200K</span><span>實驗性 review v2</span></div>
+  </header>
+  <div class="stats" aria-label="設計目標與限制">
+    <div class="stat"><strong>5 skills</strong><span>分析、比較、寫作、查核、協調</span></div>
+    <div class="stat"><strong>100 篇</strong><span>Markdown 輸入界線；非百篇驗收結果</span></div>
+    <div class="stat"><strong>90 分鐘</strong><span>首次研究全程目標；目前尚未達標驗收</span></div>
+    <div class="stat"><strong>200K</strong><span>含輸入、工具、歷史、輸出與 margin</span></div>
+  </div>
+
+  <section id="overview">
+    <h2><span class="n">01</span>目標與目前狀態</h2>
+    <p class="small">交接入口：<a href="HANDOFF-2026-10-21.zh-TW.md">完整進度交接</a> · <a href="PACKAGE-README.zh-TW.md">套件說明</a> · <a href="evidence/current-status.json">可攜現況證據 JSON</a> · <a href="../dist/evidence-literature-review-handoff-2026-10-21.zip">下載交接 ZIP</a>（GitHub 檔案頁請選 raw 下載）。</p>
+    <p class="lead">目標是從提供的 100 篇、每篇約 10 頁論文開始，於 90 分鐘內完成主報告、100 張精簡證據卡、比較表，以及能回到原文的完整追溯資料。</p>
+    <p>研究限於使用者提供的語料。系統不自動搜尋外部學術資料庫、不補造作者／年份／DOI，也不將「這批文本沒有提到」推成「整個領域不存在」。目前完整 native 入口接受 Markdown，沒有 PDF 解析入口。</p>
+    <div class="callout warning"><strong>目前是可執行的實驗系統，還不是已驗收的百篇研究服務。</strong><p>最新兩篇冷測在卡片階段耗盡共享修訂預算而失敗；六案例局部控制雖命中預期結果，不能證明全流程或百篇品質。離線 SDK 測試通過，僅證明對應程式路徑與機械契約可運作。</p></div>
+    <div class="grid2">
+      <div class="panel"><h3>每次執行必須保留</h3><ul><li>完整來源閱讀與重要漏項查核。</li><li>主張由自己的引用支持，限定與否定不反轉。</li><li>重要負向、無效、缺失量測與失敗案例。</li><li>跨論文新推論的獨立審查。</li><li>真正 task 身份、來源版本、失敗原稿與交付雜湊。</li></ul></div>
+      <div class="panel"><h3>驗收不能混為一談</h3><ul><li><b>可安裝：</b>檔案、依賴與入口可載入。</li><li><b>機械完整：</b>來源、映射、責任、版本與身份匹配。</li><li><b>模型判斷：</b>審查模型逐項給出科學結論。</li><li><b>品質驗收：</b>對照已知缺陷與人工審查。</li><li><b>時間驗收：</b>真正冷啟動至完整交付在時限內。</li></ul></div>
+    </div>
+  </section>
+
+  <section id="protocols">
+    <h2><span class="n">02</span>三條執行路線：不要混用版本名稱</h2>
+    <div class="table-wrap"><table><thead><tr><th>路線</th><th>入口／環境</th><th>主要責任</th><th>狀態邊界</th></tr></thead><tbody>
+      <tr><td><b>Native review v1</b><br><span class="pill">CLI 預設</span></td><td><code>native_review.py</code><br>DeepAgents 0.7.15</td><td>來源／cross-group proof、獨立 assembly、版本化證明 DAG；host 重播 coverage、依賴及身份。</td><td>matching proof gate 通過才能完成對應協定；不等同人工學術審核。額外 witness／packing 仍為實驗。</td></tr>
+      <tr><td><b>Native review v2</b><br><span class="pill exp">明確 opt-in</span></td><td><code>--review-protocol v2</code><br>同一套 native 依賴</td><td>每篇 reviewer 合併 source support、全文漏項與卡片整合責任；每層 section reviewer 查新推論及整合。合格版本才能流向上層。</td><td>即使全程完成，仍是 <code>protocol_completed_experimental</code>；<code>publication_verified=false</code>、<code>quality_validated=false</code>。</td></tr>
+      <tr><td><b>Legacy artifacts／harness</b><br><span class="pill">相容路線</span></td><td><code>litreview.py</code>、<code>harness_runner.py</code><br>舊 DeepAgents adapter 固定 0.7.0</td><td>PaperAnalysis、Evidence、ComparisonSet、ReviewDraft、VerificationSet 等公開檔案契約；另有 OpenCode／Codex／Claude Code 接法。</td><td>deterministic CLI 自己不派模型。不可拿舊 0.7.0 鎖檔覆蓋 native 0.7.15 環境。</td></tr>
+    </tbody></table></div>
+    <p><code>review v2</code>、<code>ComparisonSet v2</code>、<code>paper-review-wire/2.1</code> 各自代表流程、舊 artifact、傳輸編碼版本，並非同一個版本號。歷史 README／v0.6 驗收紀錄也不能代替目前 native v2 驗收。</p>
+    <p>Legacy 可接任意人類報告、參考文獻別名與公開分析檔案；目前單任務 native verifier 的 shell 入口則只接受可重建計畫的 source 節點。廣泛的 skill 能力不表示每項能力都有同名 native CLI。</p>
+  </section>
+
+  <section id="architecture">
+    <h2><span class="n">03</span>真實代理、TaskStore 與分層責任</h2>
+    <figure><div class="diagram">
+      <svg viewBox="0 0 1120 450" role="img" aria-labelledby="dag-title dag-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="dag-title">Native v2 文獻回顧責任圖</title><desc id="dag-desc">host 建立來源與持久任務，真 DeepAgents coordinator 用 task 派工。reader 到 writer，再經 closed checks 與完整 reviewer 合格後，才比較及分層綜合。所有最終版本通過 host release 重播才能輸出實驗交付；負面回到有限修訂。</desc>
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#63849a"/></marker><marker id="redarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#b25d65"/></marker></defs>
+        <rect x="10" y="10" width="1100" height="77" rx="10" fill="#173c56"/><text x="35" y="40" fill="#fff" font-size="17" font-weight="700">真 DeepAgents coordinator</text><text x="35" y="65" fill="#c5deed" font-size="13">使用 SDK task → runtime factory → 隔離子代理；回傳精簡 artifact receipt，不把全文灌回主代理</text>
+        <text x="916" y="40" fill="#b6e4dc" font-size="13">共用 deadline</text><text x="916" y="64" fill="#b6e4dc" font-size="13">共用 RequestGovernor</text>
+        <path d="M90 87V121M286 87V121M500 87V121M729 87V121M945 87V121" stroke="#9ab4c5" stroke-dasharray="4 4" fill="none"/>
+        <g font-size="14" text-anchor="middle" fill="#17364d">
+          <rect x="18" y="122" width="150" height="86" rx="7" fill="#e7eff6" stroke="#abc3d3"/><text x="93" y="153" font-weight="700">全文 reader</text><text x="93" y="177" font-size="12">parts／findings</text><text x="93" y="195" font-size="12">questions／obligations</text>
+          <rect x="206" y="122" width="166" height="86" rx="7" fill="#e7eff6" stroke="#abc3d3"/><text x="289" y="153" font-weight="700">卡片 writer</text><text x="289" y="177" font-size="12">完整 finding context</text><text x="289" y="195" font-size="12">最多 12 claims／3000 字元</text>
+          <rect x="410" y="122" width="180" height="86" rx="7" fill="#e4f4f0" stroke="#68afa3"/><text x="500" y="151" font-weight="700">卡片 qualification</text><text x="500" y="175" font-size="12">closed checks（可選）</text><text x="500" y="194" font-size="12">＋完整 paper reviewer</text>
+          <rect x="628" y="122" width="180" height="86" rx="7" fill="#e7eff6" stroke="#abc3d3"/><text x="718" y="151" font-weight="700">比較／分層綜合</text><text x="718" y="175" font-size="12">只消耗已合格版本</text><text x="718" y="194" font-size="12">保留 direct premises</text>
+          <rect x="846" y="122" width="186" height="86" rx="7" fill="#e4f4f0" stroke="#68afa3"/><text x="939" y="151" font-weight="700">section qualification</text><text x="939" y="175" font-size="12">新推論／premise retention</text><text x="939" y="194" font-size="12">scope／cells／render</text>
+        </g>
+        <path d="M168 164H202M372 164H406M590 164H624M808 164H842" stroke="#63849a" stroke-width="2" marker-end="url(#arr)"/>
+        <path d="M939 208V250H720V286" fill="none" stroke="#63849a" stroke-width="2" marker-end="url(#arr)"/>
+        <path d="M500 208V245H289V212M939 212V268H718V212" fill="none" stroke="#b25d65" stroke-dasharray="6 4" marker-end="url(#redarr)"/>
+        <text x="30" y="246" fill="#a04450" font-size="12">negative → 保留原稿／有限修訂／新版本重查</text>
+        <rect x="16" y="286" width="495" height="126" rx="9" fill="#f1f5f8" stroke="#c3d4df"/><text x="38" y="316" fill="#1c455f" font-size="16" font-weight="700">Host 持久層與機械完整性</text><text x="38" y="344" fill="#526d80" font-size="13">來源原始 bytes／SHA／offsets；SQLite TaskStore＋content-addressed objects</text><text x="38" y="368" fill="#526d80" font-size="13">真 task lineage／RuntimeIdentity；每次 raw submission／負面／版本歷史</text><text x="38" y="392" fill="#526d80" font-size="13">機械完整性不等於科學語意正確</text>
+        <rect x="574" y="286" width="295" height="126" rx="9" fill="#e7f3f1" stroke="#82b9af"/><text x="595" y="316" fill="#155a55" font-size="16" font-weight="700">Host final release 重播</text><text x="595" y="344" fill="#3c6a66" font-size="13">精確 source／target／child closure／identity</text><text x="595" y="368" fill="#3c6a66" font-size="13">完整 paper inventory 與已查核 render</text><text x="595" y="392" fill="#3c6a66" font-size="13">不新增假模型 publication-root</text>
+        <path d="M511 348H570M869 348H901" stroke="#63849a" stroke-width="2" marker-end="url(#arr)"/>
+        <rect x="905" y="286" width="198" height="126" rx="9" fill="#fff3dc" stroke="#d4b271"/><text x="921" y="316" fill="#805d22" font-size="16" font-weight="700">四類實驗交付</text><text x="921" y="344" fill="#80623a" font-size="13">主報告／卡片／比較／追溯</text><text x="921" y="368" fill="#80623a" font-size="13">publication_verified=false</text><text x="921" y="392" fill="#80623a" font-size="13">quality_validated=false</text>
+      </svg>
+    </div><figcaption>圖示為 opt-in native v2；同一層可並行，依賴未合格時不得先寫下游。完整 source 查漏責任留在 paper reviewer，上層讀實際 premises 與其合格閉包。</figcaption></figure>
+    <h3>身份由 runtime 產生，不讓模型自己宣告</h3>
+    <p>主代理必須實際呼叫 DeepAgents SDK 的 <code>task</code> 工具，才建立 worker。身份含獨立 context、parent context、task tool-call、實際 skill 快照及輸入／輸出 hash。TaskStore 以 lease 管理 pending／running／accepted／failed；coordinator 取回短 receipt，再由 host 核對任務與 artifact。</p>
+    <p>Writer 與 reviewer 使用不同任務上下文；reviewer 不能以 writer 自我辯護替代原文判斷。它們仍可能使用同一 Qwen 模型，因此這是<b>執行身份與上下文獨立</b>，不代表模型錯誤完全互相獨立。匯出的 identity JSON 僅是 provenance 紀錄，不是可重新匯入的信任 registry，也不是數位簽章。</p>
+    <h3>v1 與 v2 的責任轉移</h3>
+    <p>v1 將來源與整合分成不同 proof／assembly 任務。v2 改讓一位獨立 paper reviewer 同時看全文、reader、卡片與連續 render，承擔 source support、raw retention、全文漏項與整合責任；每個 section reviewer 同理審新推論與該層整合。host 只檢查版本、映射、覆蓋、依賴與交付，不冒充語意審稿者。這是新契約與負載取捨，尚不能宣稱品質等同或優於 v1。</p>
+  </section>
+
+  <section id="skills">
+    <h2><span class="n">04</span>五項 skills：用途、input／output／protocol</h2>
+    <p>四個 leaf skills 可各自安裝使用；完整 literature-review 才需要五個 skills。<code>assembly-auditor</code> 是 v1 runtime role，映射至 verify-citations，不是第六個 skill。下表的 schema 名稱是實際介面，並非任意自然語言檔名。</p>
+    <div class="table-wrap"><table><thead><tr><th>Skill</th><th>目的與 native role</th><th>主要 input</th><th>主要 output／邊界</th></tr></thead><tbody>
+      <tr><td><b>analyze-paper</b></td><td>全文逐 part 分析；<code>reader</code></td><td><code>scientific-source/1</code>：原始 UTF-8 bytes 的完整 parts、來源 hash、研究問題。</td><td><code>scientific-record/1</code>：九欄 findings、evidence、逐 part observations、問題判定、重要義務。結構接受尚未科學批准。</td></tr>
+      <tr><td><b>compare-papers</b></td><td>比較條件、差異、反證與缺口；<code>comparer</code></td><td><code>review-draft-packet/1</code>，kind=comparison；v2 由合格卡片建立 direct-premise packet。</td><td><code>review-section/1</code>，含 paper×dimension cells、claims、展開 retention。不是獨立審查結論。</td></tr>
+      <tr><td><b>write-review</b></td><td>精簡卡片與分層綜合；<code>writer</code></td><td>kind=paper_card 或 synthesis 的 draft packet；精確 source refs／actual premises／retention obligations。</td><td>mapped section 與連續 render。卡片最多 12 claims、合計 3000 Unicode 字元；不得用限額刪重要反證。</td></tr>
+      <tr><td><b>verify-citations</b></td><td>獨立支持、限定、引用與遺漏審查；<code>verifier</code></td><td>單任務 CLI：<code>native-proof-input/1</code>。完整 v2：paper／section bundles，及可選 closed packets。</td><td>matching proof 或 v2 attestation，保留 negative／unresolved。單節點結果不能批准整份報告。</td></tr>
+      <tr><td><b>literature-review</b></td><td>協調全文到交付；coordinator</td><td>新 Markdown 目錄＋問題 JSON；完整 native run 不以舊 analysis cache 冒充 cold。</td><td>主報告、全篇卡片、比較表、引用與原文、完整 audit；未通過則保存 unpublished attempt。</td></tr>
+    </tbody></table></div>
+    <div class="skill"><div class="skill-head"><h3>analyze-paper：從原文到可查核記錄</h3><span class="role">scientific-source/1 → scientific-record/1</span></div>
+      <p>使用 <code>source_packet(paper_id, raw_bytes, questions)</code> 建封包。它按空白行保留完整文字及 byte offsets；重組必須等於原檔。Reader 對每個 part 交具體 observation，不能只交「已讀」。</p>
+      <p>九欄為 research_question、contributions、method、evaluation、results、limitations、conditions、relevance、unexpected_findings。每個 finding 有 attribution、來源 evidence 及適用的 retention tags；欄位的 extracted／not_reported／not_applicable／unresolved 不可互相代用。</p>
+      <pre class="schema"><code>submit_result({"data": {
+  "observations": [...],   // 每個 part 一項
+  "findings": [...],       // local_id、field、text、attribution、evidence、obligations
+  "fields": [...],         // 九欄完整判定
+  "questions": [...]       // status、reason、support、counterevidence
+}})</code></pre>
+      <p class="small">這是形狀說明，含註解與省略號，不能直接當合法 JSON。<code>quote=null</code> 表示 host 綁完整原 part，不是沒交原文。字串／多餘 keys 不會被新 raw reader 入口悄悄轉正。</p>
+    </div>
+    <div class="skill"><div class="skill-head"><h3>compare-papers／write-review：寫作與 lineage</h3><span class="role">review-draft-packet/1 → review-section/1</span></div>
+      <p>葉節點用 <code>draft_packet(...)</code>；上層用 <code>inference_packet(...)</code> 或 v2 的 <code>section_draft_packet_v2(...)</code>。上層保留完整 direct-premise prose 與來源版本，並不重新傳送全部原始論文；原文查核責任必須存在於 child closure。</p>
+      <pre class="schema"><code>data.claims[] = local_id, text, evidence_refs, question_ids,
+                attribution, scope, population_paper_ids, premise_claim_ids
+data.retention_groups[] = obligation_ids, status(included|excluded), claim_ids, reason
+data.cells[] = paper_id, dimension, claim_ids</code></pre>
+      <p>模型使用短 obligation aliases 及可逆 grouped retention；host 展開後，每個原 obligation 都有自己的 disposition。<code>reader_evidence_ids</code> 是讀者抽取 bookkeeping；寫作引用必須用 <code>paper_id/part_id</code>，例如 <code>paper01/p0007</code>。Comparison 必須覆蓋指定 paper×dimension，不可把異質 metric 當成同一排行榜。</p>
+    </div>
+    <div class="skill"><div class="skill-head"><h3>verify-citations：四種明確責任</h3><span class="role">source proof／paper／section／closed</span></div>
+      <ol><li><b>v1 source proof：</b>從原始 packets、records、sections 重建計畫，只允許指定的 dependency-free source 節點獨立執行。</li><li><b>v2 paper reviewer：</b>完整 source＋reader＋card＋render，查主張、逐原始義務、全文漏項、render 整合。</li><li><b>v2 section reviewer：</b>完整 direct premises＋target，查每個新推論、premise retention、族群／問題／cells／整合。</li><li><b>附加 closed checks：</b>一個 claim 只看自己的 refs；retention 只看 finding、自己的原文及實際 named destinations，不能跨引用救援。</li></ol>
+      <p>後三種由完整 v2 workflow 使用 Python API 調度；目前沒有 <code>native_task --role paper-reviewer</code> 或獨立 closed-check 正式 CLI。Legacy 人類報告查核入口也不等於上述單節點 native verifier。</p>
+    </div>
+  </section>
+
+  <section id="setup">
+    <h2><span class="n">05</span>Windows 與 Ubuntu 22.04 設置</h2>
+    <p>使用 Python 3.11+ 的獨立虛擬環境。Ubuntu 22.04 預設 Python 3.10 不符合要求，先由組織認可方式備妥相容 Python；下例的 <code>python3.11</code> 必須已存在。安裝依賴、下載 tokenizer 會連網；安裝器與 doctor 本身不呼叫模型。</p>
+    <div class="grid2"><div><h3>Windows／PowerShell</h3><pre><code># 在 repository 根目錄；環境只用於 native 0.7.15
+py -3.12 -m venv .venv
+&amp; .\.venv\Scripts\python.exe -m pip install -r skills/literature-review/scripts/requirements-native.txt
+
+# 選擇一個全新的研究專案目錄
+&amp; .\.venv\Scripts\python.exe -X utf8 scripts/install_skills.py --source skills --target C:/Research/LitReview --harness deepagents
+
+# 安全地在目前程序設定 key；不將真值寫進檔案
+$apiSecret = Read-Host "OpenRouter API key" -AsSecureString
+$env:OPENROUTER_API_KEY = [System.Net.NetworkCredential]::new("", $apiSecret).Password</code></pre></div>
+      <div><h3>Ubuntu 22.04／Bash</h3><pre><code># 在 repository 根目錄；python3.11 已備妥
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r skills/literature-review/scripts/requirements-native.txt
+
+python -X utf8 scripts/install_skills.py --source skills --target /home/user/research/litreview --harness deepagents
+
+# 互動輸入，不將真值放進指令或版本庫
+read -rsp 'OpenRouter API key: ' OPENROUTER_API_KEY
+export OPENROUTER_API_KEY
+printf '\n'</code></pre></div></div>
+    <p class="small">Windows 後續的 <code>python</code> 請換成該 venv 的 Python，或先啟用環境。native 不會自動讀取 <code>.env</code>；舊 <code>LITREVIEW_API_KEY</code>／<code>LITREVIEW_MODEL_ID</code> 不適用。金鑰不應放入 skills、HTML、報告或 Git commit。</p>
+    <h3>固定依賴與 tokenizer</h3>
+    <div class="table-wrap"><table><thead><tr><th>套件</th><th>Native pin</th><th>套件</th><th>Native pin</th></tr></thead><tbody><tr><td>deepagents</td><td>0.7.15</td><td>langchain</td><td>1.4.1</td></tr><tr><td>langchain-core</td><td>1.6.3</td><td>langgraph</td><td>1.2.11</td></tr><tr><td>langchain-openrouter</td><td>0.2.8</td><td>httpx</td><td>0.28.1</td></tr><tr><td>pydantic</td><td>2.12.5</td><td>tokenizers</td><td>0.23.3</td></tr><tr><td>psutil</td><td>7.2.2</td><td>檔案位置</td><td><code>skills/literature-review/scripts/requirements-native.txt</code></td></tr></tbody></table></div>
+    <pre><code># 以下所有 /ABS/... 都要替換成當地絕對路徑；Windows 可用 C:/...。
+python -X utf8 /ABS/PROJECT/skills/literature-review/scripts/runtime/litreview_core/qwen_tokens.py --download --path /ABS/PROJECT/qwen-tokenizer.json
+
+python -X utf8 /ABS/REPO/scripts/check_installation.py --project /ABS/PROJECT --harness deepagents --tokenizer /ABS/PROJECT/qwen-tokenizer.json</code></pre>
+    <p>固定 tokenizer revision 為 <code>1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0</code>；JSON SHA256 為 <code>0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3</code>。只下載 tokenizer，不是下載 Qwen 權重。doctor 檢查檔案、pins、SHA 與 key 存在；<b>不驗證金鑰有效、provider 可用或研究品質</b>。</p>
+    <h3>Installer 已統一為一份實作</h3>
+    <p>根目錄 <code>scripts/install_skills.py</code> 與 bundled <code>skills/literature-review/scripts/install_skills.py</code> 現在都載入 stdlib-only 的 <code>skill_installation.py</code>。舊盤點 §11「兩份實作不一致」描述的是已修正的狀態。</p>
+    <ul><li>DeepAgents profile 為 <code>deepagents-native-typed/1</code>：選取 skill 的 SKILL／references，搭配 canonical native runtime、doctor、task、pins 與 installer；literature-review 額外有 full review／reading 入口。</li><li>來源安裝包仍須提供 canonical literature-review scripts。安裝後單一 leaf skill 可獨立執行，不必安裝其他四項；它帶自己的 installer，但重新安裝仍需符合 canonical source-package 規則。</li><li>不覆蓋既有同名 skill；先檢必要檔案與來源，再凍結 bytes、staging、exclusive commit。rollback 只處理該 transaction 有 ownership 的目錄。</li><li><code>native-installation.json</code> 保存來源檔案 hash 與 <code>model_inference=not_tested</code>。native profile 排除 legacy harness／深層示例 assets；不能假設已安裝 native leaf 同時帶有舊 CLI。</li><li>codex、claude-code、opencode 分支仍採完整 selected-skill copy；相同旗標不代表它們已完成同等 native 模型驗收。</li></ul>
+    <p class="small">平台可攜性須分別看檔案／安裝／SDK 離線測試與真模型冷測。Windows 或 Ubuntu 任一 scripted 測試通過，不能自動證明另一平台的百篇時限與品質。可攜 Ubuntu 22.04 紀錄：<a href="evidence/ubuntu22-reader-prompt-overlay-20261021.md">reader prompt overlay</a>、<a href="evidence/ubuntu22-selectors-install-overlay-20261021.md">selectors／安裝 overlay</a>、<a href="evidence/ubuntu22-closed-checks-install-overlay-20261021.md">closed checks／安裝 overlay</a>、<a href="evidence/ubuntu22-closed-schema-supplement-20261021.md">closed schema 補充</a>。每份只涵蓋其 captured bytes 與列明 suites；共享 installer 等後續修正不自動納入舊 overlay。</p>
+  </section>
+
+  <section id="commands">
+    <h2><span class="n">06</span>獨立任務與完整流程：真實命令</h2>
+    <div class="callout warning"><strong>下面的 native_task／native_review 命令會真正呼叫模型並計費。</strong><p>命令是依目前入口核對的語法範本，並非本文件新執行的成功紀錄。先備妥合法 input packet；不要把任意 Markdown 或省略號 JSON 直接當 native_task input。所有 output 目錄都應全新，且位於來源目錄之外。</p></div>
+    <h3>6.1 只安裝並診斷一個 skill</h3>
+    <pre><code>python -X utf8 /ABS/REPO/scripts/install_skills.py --source /ABS/REPO/skills --target /ABS/PROJECT --harness deepagents --skill analyze-paper
+
+python -X utf8 /ABS/PROJECT/skills/analyze-paper/scripts/native_doctor.py --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --skill analyze-paper</code></pre>
+    <p>將 skill 名換成 write-review、compare-papers 或 verify-citations 即可安裝該角色。完整流程則不加 <code>--skill</code>，安裝五項。單任務的 coordinator 也使用所選 skill，而非強制依賴 literature-review 已安裝。</p>
+    <h3>6.2 analyze-paper：一份完整原文封包</h3>
+    <p><code>reader-source.json</code> 必須由 <code>scientific_records.source_packet(...)</code> 形成。以下為可放進呼叫端 Python 的公開 builder 用法；它不呼叫模型：</p>
+    <pre><code>import json, sys
+from pathlib import Path
+sys.path.insert(0, "/ABS/PROJECT/skills/analyze-paper/scripts/runtime")
+from litreview_core.scientific_records import source_packet
+
+questions = json.loads(Path("/ABS/questions.json").read_text(encoding="utf-8"))
+if isinstance(questions, dict):
+    questions = questions["questions"]
+packet = source_packet("paper01", Path("/ABS/papers/paper01.md").read_bytes(), questions)
+Path("/ABS/reader-source.json").write_text(
+    json.dumps(packet, ensure_ascii=False, indent=2), encoding="utf-8")</code></pre>
+    <pre><code>python -X utf8 /ABS/PROJECT/skills/analyze-paper/scripts/native_task.py --role reader --input /ABS/reader-source.json --out /ABS/reader-run-new --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --deadline 300 --max-model-calls 3 --reasoning low --tool-choice forced</code></pre>
+    <p>接受後的 <code>artifact.json</code> 是 scientific record；<code>task-result.json</code> 是單任務執行報告，不是完整 review 驗收。</p>
+    <h3>6.3 write-review：卡片或 synthesis</h3>
+    <p><code>writer-packet.json</code> 是 kind=paper_card 或 synthesis 的 <code>review-draft-packet/1</code>。例如一張卡片可由 <code>draft_packet('paper_card', [source], [record], questions, include_reader_findings=True)</code> 建立；來源與 record 必須匹配。Synthesis 使用 actual direct premises，不是把先前對話記憶當輸入。</p>
+    <pre><code>python -X utf8 /ABS/PROJECT/skills/write-review/scripts/native_task.py --role writer --input /ABS/writer-packet.json --out /ABS/writer-run-new --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --deadline 300 --max-model-calls 3 --reasoning low --tool-choice forced</code></pre>
+    <h3>6.4 compare-papers：指定維度的比較</h3>
+    <p><code>comparison-packet.json</code> 的 kind 必須為 comparison，包含指定 papers、dimensions、義務與可追溯材料。公開 builder 為 <code>draft_packet(...)</code> 或 <code>inference_packet(sections, packets, records, questions, kind='comparison', dimensions=...)</code>。後者只接受每篇唯一的 paper-card premises。v2 完整流程另要求 qualified child closure。</p>
+    <pre><code>python -X utf8 /ABS/PROJECT/skills/compare-papers/scripts/native_task.py --role comparer --input /ABS/comparison-packet.json --out /ABS/comparison-run-new --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --deadline 300 --max-model-calls 3 --reasoning low --tool-choice forced</code></pre>
+    <h3>6.5 verify-citations：目前單任務 native source 節點</h3>
+    <p><code>proof-input.json</code> 必須正好含以下五個 keys；陣列內是實際 objects，不能交自製可信身份或外部 proof。Node ID 必須由相同設定下的 <code>plan_review(sections, packets, records, ...)</code> 重建得到，且 kind=source、role=verifier、dependencies=[]。</p>
+    <pre class="schema"><code>{
+  "schema": "native-proof-input/1",
+  "packets": [...],
+  "records": [...],
+  "sections": [...],
+  "node_id": "由重建計畫取得的來源節點 ID"
+}</code></pre>
+    <pre><code>python -X utf8 /ABS/PROJECT/skills/verify-citations/scripts/native_task.py --role verifier --input /ABS/proof-input.json --out /ABS/proof-run-new --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --deadline 300 --max-model-calls 3 --reasoning low --tool-choice forced --proof-max-units 16</code></pre>
+    <p>產物含 <code>proof-result.json</code>。它只代表被指派 source responsibility；無法以此替完整報告、所有卡片或任意人類稿件自動批准。<code>--quote-witness</code> 是另外的 v1 實驗，不是 v2 whole-unit selector 的別名。</p>
+    <h3>6.6 literature-review：完整 experimental v2</h3>
+    <p><code>papers</code> 第一層放 1–100 個 <code>.md</code>／<code>.markdown</code>；不遞迴，檔名 stem 不得重複或僅大小寫不同。問題檔接受 JSON array 或 <code>{"questions":[...]}</code>。此命令明確啟用 v2、whole-unit 與附加 closed checks，並保留預設 low reasoning 供實驗；它不是已驗收的正式設定。</p>
+    <pre><code>python -X utf8 /ABS/PROJECT/skills/literature-review/scripts/native_review.py --sources /ABS/PROJECT/papers --questions /ABS/PROJECT/questions.json --out /ABS/PROJECT/review-run-new --skills-root /ABS/PROJECT/skills --tokenizer /ABS/PROJECT/qwen-tokenizer.json --review-protocol v2 --review-observations whole-unit --closed-checks --workers 8 --active-token-limit 1000000 --group-size 4 --deadline 5400 --reviewer-max-output-tokens 16384 --reader-reasoning low --writer-reasoning low --reviewer-reasoning low</code></pre>
+    <p>完整 v1 使用同一入口，改為 <code>--review-protocol v1</code>，移除 v2-only <code>--review-observations whole-unit</code>／<code>--closed-checks</code>。V2 不沿用 v1 的 merge／source-witness／非預設 proof packing 選項。CLI 有 <code>--provider</code> 與獨立 <code>--coordinator-provider</code>；它們只改 Qwen 路由，不改模型。</p>
+    <details><summary>入口預設值與尚未提供的功能</summary><div>
+      <div class="table-wrap"><table><thead><tr><th>入口</th><th>預設</th><th>重要限制</th></tr></thead><tbody><tr><td>native_task</td><td>tool-choice=auto；reasoning=low；output=16384；max-model-calls=6；deadline=300 秒。</td><td>本頁示例主動選 forced／3 calls；這不是改了 CLI 預設。Coordinator reasoning 仍是 low。</td></tr><tr><td>native_review</td><td>protocol=v1；workers=8；group-size=4；deadline=5400；active-token-limit=1M；reviewer output=16384。</td><td>workers 1–32；group-size 2–8。v1 proof-max-units 預設16、可選1–128；不代表提高 context cap。</td></tr></tbody></table></div>
+      <p>目前沒有 <code>--model</code>、<code>--rpm</code>、<code>--tpm</code>、<code>--resume</code>、<code>--build-packet</code>、strict-mode CLI 或 PDF 入口。<code>native_reading.py</code> 僅為 reading-stage 入口，不能代替完整 review。Legacy job 的 resume／reuse 是另一條契約，不要套進新 native cold 命令。</p>
+    </div></details>
+  </section>
+
+  <section id="design">
+    <h2><span class="n">07</span>關鍵實作設計：效率與科學責任一起看</h2>
+    <div class="table-wrap"><table><thead><tr><th>設計</th><th>現在怎麼做</th><th>保留的邊界</th></tr></thead><tbody>
+      <tr><td><b>完整 finding handoff</b></td><td>v2 leaf draft 明確啟用 <code>reader-finding-context/1</code>；每 finding 一份完整文字、來源對應及 record／source／execution 綁定，避免 writer 只看 opaque finding_id 猜內容。</td><td>Reader finding 是待查抽取，不是科學真值。舊 packet profile 預設仍保留，以重播歷史 controls；不能宣稱舊 run 已獲新輸入。</td></tr>
+      <tr><td><b>可逆 wire</b></td><td>Draft source 欄位表、paper version dictionary、短 obligation aliases、grouped retention。Paper reviewer 使用 <code>paper-review-wire/2.1</code> 反向字典／column rows，完整 render 保持連續可讀。</td><td>不是科學摘要，也不以 hash 取代來源／reader prose。還原須與 canonical 精確相等；host gate 仍逐原 obligation 查核。</td></tr>
+      <tr><td><b>Minimum-unit IDs</b></td><td>Host 從 immutable claim 生成 minimum-unit inventory，模型逐項判 source／claim relation、qualification 與 conclusion。</td><td>不要求模型重抄整句去做標點 concat。Host 分割不是語意原子完整性證明，整個 claim 仍須由模型判斷。</td></tr>
+      <tr><td><b>Whole-unit selectors</b></td><td>明確 mode <code>whole-unit-selectors/1</code>；模型選自己已宣告 source part／direct premise claim 的 selector ID；host 還原完整原字文字。</td><td>保留 raw selectors、index／source hashes、expanded submission；fresh release 重播。精度比 substring 粗，不代表科學支持更強。</td></tr>
+      <tr><td><b>Closed scientific checks</b></td><td>每 claim 獨立小封包，只有自己的原文 parts／direct premises。Retention 按同 finding＋完全相同 status、ordered claim_ids、reason 分組。</td><td>每個原 tag／required unit 都獨立有 verdict。Named claim 必須真的寫出保留內容；不能借其他 claim、reader 文字或 finding 自己救援。</td></tr>
+      <tr><td><b>Raw submit＋短 feedback</b></td><td>Reader／draft 使用完整 JSON Schema 工具，但原始 args 先保存，再由 host 做嚴格 envelope／型別／extra／enum／科學 gate 驗證。Feedback 只交 error locations/types 或 actionable IDs。</td><td>避免 SDK 把數萬字錯稿整份回餵。沒有把 extras 刪掉、把 string 解成合格科學值，或自動替模型補內容。</td></tr>
+      <tr><td><b>Negative terminal</b></td><td>真 negative／missing components 原樣保存，終止該科學嘗試，交明確 writer revision；格式 invalid 與 semantic negative 分開。</td><td>不允許靠同稿反覆抽 reviewer 把 needs_revision 洗成 passed。格式重試也有 call 上限與原 deadline。</td></tr>
+    </tbody></table></div>
+    <h3>Closed checks 不是把全文審查拿掉</h3>
+    <p>局部核對會刻意隱藏未引用材料，防止「資料夾裡別處有支持」救了不當引用。完整 paper reviewer 仍要看到完整原文、reader、卡片與 render，查重要遺漏及整合；section reviewer 仍要看實際 direct premises、retention、cells 與 scope。Closed checks 必須先合格，才允許 full review／下游依賴。</p>
+    <p>工具 schema 依 packet 限定 unit IDs、minimum IDs、material selector enums 及精確 unit row 數，減少模型把解釋句填進 observation ID 或重複 unit。模型仍須逐 minimum unit 做獨立關係判斷。簡短理由建議以 ID＋有區辨力的支持／缺口說明，不應重抄整段 finding；省 token 不等於已證明判斷品質相同。</p>
+    <h3>新增 strict supported-subset 候選 <span class="pill exp">Python API only</span></h3>
+    <p>目前 <code>create_model(..., strict_tool_mode='off')</code> 預設不變。候選 <code>strict-supported-subset/1</code> 只對 <code>submit_result</code> function 設 <code>strict:true</code>，只允許明確 Cerebras、<code>allow_fallbacks:false</code>；其他工具不啟用 strict。Named tool choice 保留，leaf parallel tool calls 關閉。</p>
+    <pre><code>from litreview_core.qwen_transport import create_model
+from litreview_core.request_governor import RequestGovernor, ThroughputConfig
+
+governor = RequestGovernor(ThroughputConfig())
+model = create_model(
+    force_submit=True,
+    governor=governor,
+    provider_preferences={"only": ["cerebras"], "allow_fallbacks": False},
+    strict_tool_mode="strict-supported-subset/1",
+)</code></pre>
+    <p>投影只在 JSON Schema AST 的關鍵字位置移除 Cerebras 不支援的安全 leaf validation constraints，例如 minLength／maxLength、pattern、minItems／maxItems、uniqueItems；<b>所有科學 properties、enums、required 保留</b>。名為 <code>minLength</code> 的科學欄位不會被刪。無法安全投影的 oneOf／allOf／conditional、未知 keywords，或未關閉的 object 直接拒絕。</p>
+    <p>Canonical host validation 不變，原／投影 schema SHA 與移除 JSON paths 可稽核。實際 request 使用合法 OpenRouter metadata；完整 paths 另在模型 audit／回覆 metadata。投影後的實際 schema 仍計入完整 request 預算。這個候選已有零 API 測試，<b>尚無 CLI 開關，也沒有本候選的真 provider probe 結果</b>；不能把 constrained schema 候選寫成已改善科學正確性。</p>
+    <p class="small">Cerebras 官方 schema 子集依據：<a href="https://inference-docs.cerebras.ai/capabilities/structured-outputs">Structured Outputs</a>、<a href="https://inference-docs.cerebras.ai/capabilities/tool-use">Tool Calling</a>。這些是外部參考連結，文件顯示不依賴它們連線。</p>
+  </section>
+
+  <section id="capacity">
+    <h2><span class="n">08</span>200K 是完整請求上限，並行還有總負載門檻</h2>
+    <pre><code>單請求 reservation
+  = 完整 input estimate（system + messages + tools/schema + history + framing）
+  + max_tokens（含模型 reasoning 使用的 completion 預算）
+  + context margin（預設 8,000）
+
+必須同時符合：全域單請求 200,000、所選 route context/output、active-token-limit。
+不符合 → 明確拒絕／要求拆任務或改寫 broad claim；不得截斷原文或歷史。</code></pre>
+    <p>使用 pinned Qwen tokenizer 做含 framing headroom 的估算；provider 實際 usage 才是計費／回報量。沒有 tokenizer 時 UTF-8 byte 預算刻意保守，不能當成實際 TPM。第二輪修格式仍保留第一輪回覆與錯誤 history，因此首輪 fit 不保證重試 fit。</p>
+    <div class="table-wrap"><table><thead><tr><th>Pinned route</th><th>Provider context</th><th>已登錄 max output</th><th>目前自動池</th><th>使用限制</th></tr></thead><tbody>
+      <tr><td><code>cerebras/fp16</code></td><td>65,536</td><td>32,768</td><td>是</td><td>完整 reservation &gt;65,536 不能硬送；strict 候選只允許此路由。</td></tr>
+      <tr><td><code>modelrun/fp4</code></td><td>262,144</td><td>235,929</td><td>是</td><td>本系統仍限制 200,000；不是允許使用全部 provider 規格。</td></tr>
+      <tr><td><code>deepinfra/bf16</code></td><td>262,144</td><td>235,929</td><td>是</td><td>依實際 provider／output budget／完整 input admission 過濾。</td></tr>
+      <tr><td><code>near-ai/fp8</code></td><td>262,144</td><td>65,536</td><td>否</td><td>明確 opt-in，不能因 registry 新增就自動擴池。</td></tr>
+      <tr><td><code>chutes/fp8</code></td><td>262,144</td><td>65,536</td><td>否</td><td>同上。Unknown variant 不繼承 base 容量。</td></tr>
+    </tbody></table></div>
+    <p class="small">這是程式 pinned registry 的 metadata，不是即時服務保證。來源為 repo <code>docs/provider-metadata/openrouter-qwen3.8-20261019.json</code>，抓取時間 2026-10-19T20:38:27.544262+00:00；catalog SHA256：<code>41398d280abe392b0926627656cf5626f80db335a1b641cc394974717676cb09</code>。Native CLI 目前 reviewer 可選 output 16,384／32,768，不是直接暴露表中全部上限。</p>
+    <h3>Loading：workers 不等於同時有效模型數</h3>
+    <p>Governor 共用 global concurrency、active token reservations、deadline；預設 aggregate reservation 1,000,000。若每個 active request 約預留 150,000，僅此限制就約容許六個同時執行；即使 workers=16，也不會因此變成十六路。DAG 就緒任務數、quota、延遲、HTTP 重試、CPU／RAM 與輸出體積還會再限制吞吐。</p>
+    <ul><li><code>--active-token-limit</code> 可實驗性調整 200,000–6,400,000；單請求 200K 不變。提高總量需要同步觀察資源與限流，不能宣稱免費加速。</li><li>未知 RPM／TPM 不自行假設；Python governor 可配置，但目前沒有對應 native CLI flags。事件分開記錄 reserved 與實際 usage；缺 usage 不算零成本。</li><li>429／暫時服務錯誤會降低 logical concurrency，成功後緩升。Sync HTTP client 按 thread 重用，async client 按 event loop 重用；pool 不儲存金鑰 headers。</li><li>HTTP 最多兩次 attempts；重試等待不占 active slot，尊重原 deadline 與 Retry-After。Read timeout 可能已計費，不盲目重試；schema／semantic negative 不屬於傳輸重試。</li></ul>
+    <div class="callout"><strong>百篇時間不能由兩篇時間乘以 50 得到。</strong><p>百篇會改變 ready concurrency、階層數、premise／retention 數、上層 context 與修訂負擔。需要實際 task service-time 分布、quota、reservation 與完整品質結果，才能做有條件容量分析；本指南不提供沒有驗證依據的線性工期承諾。</p></div>
+  </section>
+
+  <section id="repair">
+    <h2><span class="n">09</span>修訂、版本失效與已知缺點</h2>
+    <div class="timeline">
+      <article><h3>1. 每次原始提交先落盤</h3><p>保留完整 raw arguments、實際身份、錯誤與來源版本。格式不符不得在保存前消失，也不能以格式清理改變科學值。</p></article>
+      <article><h3>2. 格式修復有限，真 negative 終止</h3><p>同一 leaf 有 model-call 上限；短 feedback 指出 locations、types、missing／unknown／duplicate IDs。支持判斷伴隨 missing components 仍不能通過，也不允許當成普通格式錯誤洗掉。</p></article>
+      <article><h3>3. Writer 針對失敗版本修訂</h3><p>同一全流程共用最多兩輪 scientific repair，並共享原 deadline。可修文字、限定、來源與保留映射，但不能替模型自動寫出「正確答案」。舊稿與 negative history 保留。</p></article>
+      <article><h3>4. 新版本重新 qualification</h3><p>Source、card、premise 或 mapping 改變即產生新 hash，使依賴失效。V2 未合格版本不得流向 comparison／synthesis；v1 只有 exact inputs／coverage／deps／runtime identity／closure 不變的原 sealed proof 才能同 run 重用。</p></article>
+    </div>
+    <h3>目前不能忽略的缺點</h3>
+    <p class="small">可追溯實例：<a href="evidence/independent-source-card-audit.zh-TW.md">先於 reviewer 結論的 source→card 獨立審查</a>（<a href="evidence/independent-source-card-audit.json">JSON</a>）與<a href="evidence/reviewer-comparison.zh-TW.md">既有 reviewer 對照</a>（<a href="evidence/reviewer-comparison.json">JSON</a>）。其中確認六組漏檢，與另三項未確定的精度疑慮分開記錄；不是以任一不確定疑慮冒充已確認錯誤。</p>
+    <ul><li><b>共享兩輪預算容易在早期耗盡。</b>它是整個 run 的上限，不是每篇各兩輪；最新兩篇測試已因此停止。需要評估修訂收斂與批次回饋策略，不能以無限重試換表面成功。</li><li><b>完整審查仍會誤判。</b>已發現 own-reference support、named-destination retention、數字／分類／時間／程度限定與 governing negation 的錯誤；可逆編碼或完美 coverage 不能消除它們。</li><li><b>交付語言與密度也是品質。</b>要求繁中、精簡、完整限定；型別正確的英文長稿或過度壓縮卡片都不代表使用者需求已完成。</li><li><b>長輸出與 reasoning 可能吃掉 completion。</b>Low 是請求設定，不是 provider 一定遵守的硬 token 上限；off 的速度結果也不能代替品質對照。</li><li><b>完整 native CLI 尚無 resume。</b>失敗資料有保存，但要繼續處理需明確的版本／信任／重用設計；不可把讀過的 cache 當新 cold run 成果。</li><li><b>Universal／absence 要完整 scope。</b>「所有研究」「沒有任何」「每個 subgroup」必須檢視全體實際成員與反例，不能只抽支持摘錄或依搜尋零命中決定。</li></ul>
+  </section>
+
+  <section id="delivery">
+    <h2><span class="n">10</span>交付、追溯與品質旗標</h2>
+    <p>V2 成功代表「指定實驗協定完成」，不會新增一個假的模型 publication-root。Host release 重新核對原始 source inventory、逐層 bundle／attestation、真身份、closed checks（啟用時）及精確 render；export 不可自行重寫已審查科學文字。</p>
+    <div class="table-wrap"><table><thead><tr><th>交付類別</th><th>檔案</th><th>用途</th></tr></thead><tbody>
+      <tr><td><b>主報告</b></td><td><code>main-review.md</code>、<code>review.md</code><br>對應 lines JSON</td><td>主報告與完整章節；逐行／逐 claim mapping 對回被審查版本。</td></tr>
+      <tr><td><b>全篇證據卡</b></td><td><code>evidence-cards.md</code><br><code>evidence-cards-index.json</code></td><td>每篇一張精簡卡，完整 raw extraction 另外保留；不拿未選內容冒充 not_reported。</td></tr>
+      <tr><td><b>比較表</b></td><td><code>comparison-table.md</code><br><code>comparison-table-map.json</code><br><code>comparison-cells.csv</code></td><td>從實際 cells／已查核 claim 機械投影；不在匯出時新增科學敘述。</td></tr>
+      <tr><td><b>引用與原文</b></td><td><code>citations.json</code>、<code>source-spans.json</code><br><code>sources/</code></td><td>paper／part／byte offsets／hash 對到原始 bytes；引用存在與 locator 正確仍不等於語意支持。</td></tr>
+      <tr><td><b>Audit／raw</b></td><td><code>audit/release-gate.json</code>、source inventory、identities、tasks、repairs、qualification history、closed checks、reviews index；<code>raw/reader-records.json</code>、final sections、accepted artifacts、review attempts、native traces。</td><td>保存完整責任圖、原始正／負輸出與 lineage；匯出身份檔不是新的信任來源。</td></tr>
+      <tr><td><b>完整性清單</b></td><td><code>manifest.json</code>、<code>README.md</code></td><td>每檔 exact SHA／size、協定狀態及限制。V2 archive 可去除遞迴重複表示，原 runtime bundle hash 與 child 引用仍保留。</td></tr>
+    </tbody></table></div>
+    <h3>Run 層與品質層分開讀</h3>
+    <pre><code>review-result.json
+  passed                       → 本次 operational run 有完成交付且在內部 deadline 內
+  review_protocol              → v1 或 v2
+  protocol_completed_experimental → v2 指定協定與 release 完成
+  publication_verified         → v2 永遠 false
+  quality_validated            → v2 永遠 false
+  repair_rounds_used           → 共用修訂用量
+  error / stages / tasks / telemetry / resources → 失敗與 loading 證據</code></pre>
+    <p>TaskStore 的 <code>accepted</code> 是任務生命週期狀態；writer／reader accepted 不是科學支持。V2 reviewer 的 qualified_for_experiment 也不是人工學術認證。V1 或 legacy 的 verification flag 必須按各自契約解讀，不能拿來覆蓋 v2 的 false 品質旗標。</p>
+    <h3>失敗也要交代清楚</h3>
+    <p>失敗／逾時保存 <code>unpublished-attempt/</code>、<code>draft-*</code> 產物、問題與全部歷史，manifest 為 <code>unpublished_attempt</code>。完整主報告尚不存在時，不應把已有卡片包裝成完成的回顧。原始 run 另保留 <code>artifacts/tasks.sqlite3</code>、content-addressed objects、stages 與 <code>review-result.json</code>。</p>
+    <p class="small">資料追溯可用來查「誰讀到哪些 bytes、對哪個稿版本給了何種判斷」。它不能單靠 hash 證明模型理解正確，亦不能保證引用研究本身可靠。</p>
+  </section>
+
+  <section id="evidence">
+    <h2><span class="n">11</span>目前實測：局部控制成功，全流程仍失敗</h2>
+    <div class="table-wrap"><table><thead><tr><th>測試</th><th>觀察</th><th>可以說什麼</th><th>不能說什麼</th></tr></thead><tbody>
+      <tr><td><b>6-case closed controls</b><br>2026-10-21 本地紀錄<br><span class="pill">局部實測</span></td><td>約 <b>17.984 秒</b>；6/6 符合 host-only 預期，兩正例支持、四負例 needs_revision；三個 retention groups 的 <b>8 個原義務</b> 均保留逐項 negative。該次回報成本約 US$0.0644。</td><td>這六個已選局部 packet，在真 SDK task／身份與目前 gate 下能完成並抓到指定問題。曾有重複 unit 格式 retry，後補 exact row-count schema。</td><td>不是六篇閱讀、不是兩篇完整 cold review，不估計一般 false-pass rate，更不是百篇 SLA。</td></tr>
+      <tr><td><b>最新完整 cold2</b><br><code>native-v2-closed2-20261020T195215Z-a584</code><br><span class="pill no">失敗</span></td><td>兩篇；run 內 <b>412.922 秒</b>，外部程序 <b>414.281 秒</b>。未逾該測試時限，但 <code>passed=false</code>、exit=1。</td><td>卡片階段三次 needs_revision snapshot；已用兩輪共享 repair，錯誤為 <code>Shared semantic repair budget exhausted before downstream writing</code>。負面阻止不合格版本往下游。</td><td>不能因「在時限內停止」稱成功；未完成 comparison／synthesis／完整交付，不能外推百篇工期。</td></tr>
+      <tr><td><b>零 API SDK／機械測試</b><br><span class="pill">工程回歸</span></td><td>真 SDK＋scripted model＋封網 HTTP mock 覆蓋 task lineage、schema、修訂、release/export、strict wire 等路徑；各次報告對應其 code snapshot。</td><td>可以證明測例的程式契約與拒絕路徑，包含篡改／失效／漏 coverage／negative 保留。</td><td>Scripted verdict 不是 Qwen 科學判斷；測例數不能作為學術品質指標或跨平台全流程完成證明。</td></tr>
+    </tbody></table></div>
+    <h3>時間應從哪裡開始算？</h3>
+    <p>完整冷測應從外部程序啟動到退出／精確交付完成，涵蓋 imports、派工、模型呼叫、格式 retry、科學修訂、查核與 export。CLI 內部 <code>started</code> 在 imports 後，因此上例外部與內部時間分開列。環境安裝、tokenizer 下載與輸入準備應另外報清楚；不能把重用分析、前次接受 receipts 或局部修補時間混成首次冷啟動成績。</p>
+    <div class="callout danger"><strong>目前沒有「100 篇於 90 分鐘完成」的實測證據。</strong><p>現有百篇 synthetic sizing／機械 fixture 是容量診斷，模板語料也不等於真實論文品質。這份文件沒有執行新付費模型，沒有新增模型科學批准，也沒有假設同一 provider 的延遲固定。</p></div>
+    <details><summary>實測紀錄識別與解讀方式</summary><div><p>局部 controls：<code>closed-controls-off-20261020T194348Z-2963/control-result.json</code>。最新 cold2：<code>native-v2-closed2-20261020T195215Z-a584/run/review-result.json</code> 及 <code>process-result.json</code>。原始 run 位於執行環境、未隨公開包全部上傳；<a href="evidence/current-status.json">current-status.json</a> 保存可攜摘要與原始來源 hashes，<a href="HANDOFF-2026-10-21.zh-TW.md">交接文件</a>列出配置與完整時間邊界。不要從檔名時間、stdout 或舊 README 單獨推算成功狀態。</p><p>最新 cold2 已包含 finding handoff，但仍失敗；其後的 raw draft feedback 與 strict 候選未在該付費 run 驗證。各項修正須按實際 run 的 captured bytes 判讀，不能把後續修正套回歷史失敗稿，或宣稱已重跑成功。</p></div></details>
+  </section>
+
+  <section id="roadmap">
+    <h2><span class="n">12</span>後續計畫與實作索引</h2>
+    <ol><li><b>先降低可避免的格式成本。</b>隔離 probe strict-supported-subset，確認 Cerebras 路由是否真正按完整投影 schema 解碼；同步量初輪與修格式 history 後的 complete wire，保留 canonical host gate。</li><li><b>驗證 writer handoff 是否有效。</b>完整 finding context 已提供，但需實測 named retention、關係、限定與原引用支持是否改善；不能只計 schema retry 減少。</li><li><b>讓卡片修訂收斂。</b>評估同輪批次 issue 收集、穩定 failure feedback 與版本局部重查，維持共享 deadline 和有限預算；先完成兩篇 cold，再逐步擴大到十篇。</li><li><b>對照局部與全文科學品質。</b>保留正／負控制、own-source、governing negation、分類／數值／時間、named destination、重要反證與 universal scope；任何分組或精簡理由都需品質 A/B，不能先視為等效。</li><li><b>以真負載決定百篇架構。</b>量各角色 service time、p50／p95、quota、input／output／reasoning、repair、CPU／RAM、有效並行與 active reservations；再安排首次百篇全程測試，不用線性放大猜 SLA。</li><li><b>完成跨平台與交付驗收。</b>固定來源、runtime、skills、依賴與 tokenizer 版本，在 Windows／Ubuntu 22.04 分別驗安裝、真 SDK、外部 cold clock、四類完整交付及人工抽查。</li></ol>
+    <h3>同事從哪裡看程式？</h3>
+    <ul class="source-list">
+      <li><a href="../skills/literature-review/scripts/native_review.py">native_review.py 入口</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/native_review.py">CLI 實作</a>：模型角色、deadline、telemetry、結果旗標。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/native_agent.py">native_agent.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/coordinator_frontier.py">coordinator_frontier.py</a>：SDK task 與 runtime 身份。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/task_store.py">task_store.py</a>：SQLite leases、immutable objects、dependency receipts。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/scientific_records.py">scientific_records.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/reader_worker.py">reader_worker.py</a>：原文封包與 reading。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/review_artifacts.py">review_artifacts.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/draft_worker.py">draft_worker.py</a>：mapped draft、finding handoff、raw feedback。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/review_workflow_v2.py">review_workflow_v2.py</a>：早期 qualification、修訂與逐層 DAG。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/paper_review_v2.py">paper_review_v2.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/section_review_v2.py">section_review_v2.py</a>：獨立審查責任。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/review_observation_selectors.py">review_observation_selectors.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/closed_scientific_checks.py">closed_scientific_checks.py</a>：selector 重播與局部 closed gate。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/review_release_v2.py">review_release_v2.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/delivery_export_v2.py">delivery_export_v2.py</a>：fresh release 與四類交付。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/proof_planner.py">proof_planner.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/hierarchical_proof.py">hierarchical_proof.py</a>：v1 分片／scientific-view／來源 closure。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/qwen_transport.py">qwen_transport.py</a>／<a href="../skills/literature-review/scripts/runtime/litreview_core/request_governor.py">request_governor.py</a>：payload、重試、admission。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/provider_tool_schema.py">provider_tool_schema.py</a>／<a href="../tests/test_provider_tool_schema.py">候選零 API 測試</a>：strict AST 投影與 audit。</li>
+      <li><a href="../skills/literature-review/scripts/runtime/litreview_core/skill_installation.py">skill_installation.py</a>／<a href="../scripts/check_installation.py">check_installation.py</a>：共享安裝與離線診斷。</li>
+      <li><a href="HANDOFF-2026-10-21.zh-TW.md">進度交接</a>／<a href="evidence/skill-interface-schemas-20261021.json">歷史 schema 快照</a>／<a href="evidence/schema-snapshot-status.json">與目前版本的比對</a>：13 份 schema 中 11 份一致；兩份 grouped draft args 根層由未列 additionalProperties 改為 false。19 個 source hashes 中 5 個已變更，快照不是全部現行一致的認證。</li>
+    </ul>
+    <div class="callout"><strong>建議報告結語</strong><p>已建立可追溯、可獨立派工、能拒絕不合格稿件的原生文獻回顧流程。現階段瓶頸是科學判斷與修訂收斂，加上格式與長上下文負載；下一步以小型完整冷測驗證改進，再擴到百篇。百篇 90 分鐘仍是待驗收目標。</p></div>
+  </section>
+  <footer class="footer">Evidence Literature Review Skills · 實作核對：2026-10-21 · 單檔 HTML；CSS／SVG／導航均內嵌。相對程式連結在 repo 內可用，單獨攜帶本 HTML 仍可閱讀全部說明。本文沒有載入外部資源、金鑰或模型輸出內容。</footer>
+</main>
+<script>
+// Offline convenience only; the full document remains usable without JavaScript.
+const links = Array.from(document.querySelectorAll('aside nav a'));
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => a.boundingClientRect.top-b.boundingClientRect.top);
+    if (visible.length) links.forEach(link => link.classList.toggle('active',link.hash === '#'+visible[0].target.id));
+  }, {rootMargin:'-5% 0px -68% 0px',threshold:0});
+  document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
+}
+let expandedForPrint = [];
+window.addEventListener('beforeprint',()=>{expandedForPrint=Array.from(document.querySelectorAll('details:not([open])'));expandedForPrint.forEach(item=>item.open=true);});
+window.addEventListener('afterprint',()=>{expandedForPrint.forEach(item=>item.open=false);expandedForPrint=[];});
+</script>
+</body>
+</html>

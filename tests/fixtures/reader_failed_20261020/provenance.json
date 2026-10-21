@@ -1,0 +1,41 @@
+{
+  "source_run": "native-v2-cold2-alloff-20261019T222003Z-21e0",
+  "purpose": "Unmodified JSON values extracted from actual failed reader calls; offline mechanics only, not approved science.",
+  "files": {
+    "s08-source.json": {
+      "sha256": "1db38316c5881de769f30406ed4f510368d2feee9f7e59b66f70edbc479e49b0",
+      "bytes": 45913,
+      "worker": "5e3649f4321a"
+    },
+    "s08-call-1.json": {
+      "sha256": "7adab5bf8f9cfd3bef7c025903f3ef98105a5cf332658e2d12bcbf915c962818",
+      "bytes": 48652,
+      "worker": "5e3649f4321a"
+    },
+    "s08-call-2.json": {
+      "sha256": "f32b3d03d94553f18d0539ccbc22b2a82046217756e1947b19d7c2201b0bc517",
+      "bytes": 48630,
+      "worker": "5e3649f4321a"
+    },
+    "s01-source.json": {
+      "sha256": "d2b9b7e6f0be9d455bba5bea358e12204ff5b6043b97d2078583a77efc81cc3a",
+      "bytes": 45138,
+      "worker": "fc0b9612f50d"
+    },
+    "s01-call-1.json": {
+      "sha256": "e7cc5726ae8be5db6e9c48e52953019e5bf72489db14cf5928ac48e250844b87",
+      "bytes": 44591,
+      "worker": "fc0b9612f50d"
+    },
+    "s01-call-2.json": {
+      "sha256": "4666c0d8fcefd6f3dab8c06281277892b0089b190c418f14a896fa735ea3e580",
+      "bytes": 44568,
+      "worker": "fc0b9612f50d"
+    },
+    "s01-call-3.json": {
+      "sha256": "4666c0d8fcefd6f3dab8c06281277892b0089b190c418f14a896fa735ea3e580",
+      "bytes": 44568,
+      "worker": "fc0b9612f50d"
+    }
+  }
+}

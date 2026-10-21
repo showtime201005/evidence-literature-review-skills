@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "Claim",
+  "artifact_id": "claim_0b19a18d073a81b322cd5aff",
+  "payload": {
+    "claim_id": "example-claim-1",
+    "text": "在資料集 X，方法 A 的準確率為 81%，基準 B 為 80%；差異未達統計顯著。",
+    "claim_type": "source_fact",
+    "evidence_refs": [
+      "evidence_b5677915f4d409da46d87d34"
+    ],
+    "support_status": "unverified",
+    "field": "results",
+    "paper_id": "paper_443053ac1197b89d97274465"
+  }
+}

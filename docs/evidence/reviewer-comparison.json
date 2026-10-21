@@ -1,0 +1,1190 @@
+{
+  "schema": "selectors-reviewer-host-comparison/1",
+  "created_utc": "2026-10-20T19:26:59.024866+00:00",
+  "run": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\reports\\native-v2-selectors-20261020T191516Z-335a\\run",
+  "independent_audit_path": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\evidence-literature-review-skills\\reports\\native-v2-selectors-host-audit-20261021-01\\independent-source-card-audit.json",
+  "independent_audit_sha256": "23c9307f6bdc9fa03aa49771dc882c5adfb49d5cce60b2f110b1732d0f2af2df",
+  "independent_audit_frozen_utc": "2026-10-20T19:21:55.214951+00:00",
+  "scope": "Two current paper cards, original complete papers and their accepted native paper reviewers only. Comparison/root not audited here.",
+  "new_model_api_calls": 0,
+  "tokenizer_or_tests": false,
+  "live_run_modified": false,
+  "historical_host_audit_or_gold_read": false,
+  "publication_verified": false,
+  "quality_validated": false,
+  "reviewer_summary": {
+    "s01": {
+      "review_id": "pr2_44fbc43216f17c3361d13a12",
+      "task_id": "t_bfac0e4155ad4df2ae60",
+      "context_id": "verifier-eed43bac-5328-4e6f-9745-beab08d2cc77",
+      "artifact": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\reports\\native-v2-selectors-20261020T191516Z-335a\\run\\artifacts\\objects\\91647385d2989ec620e30cc26162ec3c68de0b8edff9ef033e3ee1d0c81a8afb.json",
+      "artifact_file_sha256": "91647385d2989ec620e30cc26162ec3c68de0b8edff9ef033e3ee1d0c81a8afb",
+      "wire": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\reports\\native-v2-selectors-20261020T191516Z-335a\\run\\stages\\v2-cards-review-0\\rounds\\round-0001\\workers\\983ba467e8df\\inputs\\paper-review-v2.json",
+      "wire_sha256": "36b0d00c20dc2050d9704210cfac6e3410332953ad9eebf07eaf9aa3e84619ee",
+      "status": "passed",
+      "verdict_counts": {
+        "supported": 71
+      },
+      "unit_kinds": {
+        "claim_support": 9,
+        "raw_retention": 60,
+        "full_source_omissions": 1,
+        "render_integration": 1
+      },
+      "minimum_unit_count": 21,
+      "issues": [],
+      "new_omissions": [],
+      "publication_verified": false
+    },
+    "s08": {
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "task_id": "t_5b7565e24eab46ecb936",
+      "context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "artifact": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\reports\\native-v2-selectors-20261020T191516Z-335a\\run\\artifacts\\objects\\cbb241587e873378c420638d69569e5cd35300b53740471f025c310576f12e15.json",
+      "artifact_file_sha256": "cbb241587e873378c420638d69569e5cd35300b53740471f025c310576f12e15",
+      "wire": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\reports\\native-v2-selectors-20261020T191516Z-335a\\run\\stages\\v2-cards-review-0\\rounds\\round-0001\\workers\\d5042d8159ea\\inputs\\paper-review-v2.json",
+      "wire_sha256": "8625d2fe2d98b147100ee2e616af6d24fb67d9d4adef3505d954b4a7a690a9f4",
+      "status": "passed",
+      "verdict_counts": {
+        "supported": 120
+      },
+      "unit_kinds": {
+        "claim_support": 12,
+        "raw_retention": 106,
+        "full_source_omissions": 1,
+        "render_integration": 1
+      },
+      "minimum_unit_count": 33,
+      "issues": [],
+      "new_omissions": [],
+      "publication_verified": false
+    }
+  },
+  "finding_comparison": [
+    {
+      "independent_finding": {
+        "id": "I01",
+        "paper_id": "s08",
+        "kind": "local_citation_gap",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c7"
+        ],
+        "source_refs": [
+          "s08/p0053"
+        ],
+        "obligation_ids": [],
+        "observation": "c7 specifies a monthly update schedule, but its only declared part p0053 says update schedule without a monthly cadence. The fact is available elsewhere in the same paper (p0009/p0004), not in this claim own citation. This is local citation closure, not an invented corpus fact."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "claim_id": "c7",
+          "kind": "claim_support",
+          "minimum_unit_ids": [
+            "m15",
+            "m16",
+            "m17",
+            "m18"
+          ],
+          "source_refs": [
+            "s08/p0053"
+          ],
+          "unit_id": "u7"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [
+            {
+              "claim_relation": "Claim states external validity is limited: BioGloss-Sim is entirely fictional authored text, and Portuguese material does not establish coverage of unevaluated languages.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m15",
+              "observations": [
+                {
+                  "quote": "External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated. The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case. The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints. If any of those conditions changes, the proposed mechanism may interact differently with the input. We therefore report these conditions alongside the numerical result. They allow a later reader to assess similarity to a new task without pretending that a single fictional evaluation has already tested that task.\n\n",
+                  "source_ref": "s08/p0053"
+                }
+              ],
+              "qualification_check": "s53: 'External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated.' Direct match.",
+              "reason": "The external validity limitation is explicitly stated.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim states the presence of near-synonym queries does not prove representation of all minority use cases.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m16",
+              "observations": [
+                {
+                  "quote": "External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated. The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case. The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints. If any of those conditions changes, the proposed mechanism may interact differently with the input. We therefore report these conditions alongside the numerical result. They allow a later reader to assess similarity to a new task without pretending that a single fictional evaluation has already tested that task.\n\n",
+                  "source_ref": "s08/p0053"
+                }
+              ],
+              "qualification_check": "s53: 'The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case.' Direct match.",
+              "reason": "The non-representativeness caveat is explicit.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim lists applicability conditions: fabricated abstract structure, monthly update schedule, evidence budget, and negative concept constraints.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m17",
+              "observations": [
+                {
+                  "quote": "External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated. The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case. The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints. If any of those conditions changes, the proposed mechanism may interact differently with the input. We therefore report these conditions alongside the numerical result. They allow a later reader to assess similarity to a new task without pretending that a single fictional evaluation has already tested that task.\n\n",
+                  "source_ref": "s08/p0053"
+                }
+              ],
+              "qualification_check": "s53: 'The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints.' Direct match.",
+              "reason": "All four conditions are listed in s53.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim states that if any condition changes, the mechanism may interact differently.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m18",
+              "observations": [
+                {
+                  "quote": "External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated. The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case. The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints. If any of those conditions changes, the proposed mechanism may interact differently with the input. We therefore report these conditions alongside the numerical result. They allow a later reader to assess similarity to a new task without pretending that a single fictional evaluation has already tested that task.\n\n",
+                  "source_ref": "s08/p0053"
+                }
+              ],
+              "qualification_check": "s53: 'If any of those conditions changes, the proposed mechanism may interact differently with the input.' Direct match.",
+              "reason": "The conditional interaction statement is explicit.",
+              "source_relation": "direct"
+            }
+          ],
+          "reason": "m15: s53 states external validity requires caution because the collection, questions, and update process are all authored; BioGloss-Sim is fictional authored text. m16: s53 states the Portuguese material does not establish coverage of languages that were not evaluated. m17: s53 states the presence of queries containing confusing near-synonyms does not prove the dataset represents every minority use case. m18: s53 lists the applicability conditions (fabricated abstract structure, update schedule, evidence budget, negative concept constraints) and states if any changes, the mechanism may interact differently. All match.",
+          "status": "supported",
+          "unit_id": "u7"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0053"
+          ],
+          "local_id": "c7",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "外部效度受限：BioGloss-Sim為全虛構作者文本，葡萄牙語材料不建立未評估語言的覆蓋；近義詞查詢存在不證明代表所有少數用例。適用條件包括虛構摘要結構、月度更新排程、證據預算與負概念約束；任一條件改變可能使機制交互不同。"
+        }
+      ],
+      "retention_rows": [],
+      "reader_findings": [],
+      "source_parts": [
+        {
+          "end_byte": 36007,
+          "part_id": "p0053",
+          "start_byte": 35128,
+          "text": "External validity requires caution because the collection, questions, and update process are all authored. The Portuguese material in BioGloss-Sim does not establish coverage of languages that were not evaluated. The presence of queries containing confusing near-synonyms in the benchmark also does not prove that the dataset represents every minority use case. The most relevant applicability conditions are the collection's fabricated biomedical abstract structure, its update schedule, the evidence budget, and the use of explicit negative concept constraints. If any of those conditions changes, the proposed mechanism may interact differently with the input. We therefore report these conditions alongside the numerical result. They allow a later reader to assess similarity to a new task without pretending that a single fictional evaluation has already tested that task.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I02",
+        "paper_id": "s08",
+        "kind": "named_retention_mismatch",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c4"
+        ],
+        "finding_ids": [
+          "s08-f38"
+        ],
+        "obligation_ids": [
+          "s08:s08-f38:extracted_conditions",
+          "s08:s08-f38:missing_measurement",
+          "s08:s08-f38:question_counterevidence"
+        ],
+        "observation": "The assigned finding covers annotation-quality review and clinical utility remaining unmeasured after that exercise. Its dispositions name c4 and say these facts are retained there. c4 only describes persistent wrong-concept mapping and loss of qualifications. It does not state annotation-quality review or missing clinical utility. c6 contains missing utility elsewhere, which does not establish named c4 retention."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f38:extracted_conditions",
+          "unit_id": "u89"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f38:missing_measurement",
+          "unit_id": "u90"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f38:question_counterevidence",
+          "unit_id": "u91"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f38:extracted_conditions (conditions from p0028). Retention row maps to c4 with reason t000230: '標註品質檢查與下游臨床效用缺失在c4中保留。' c4 states the unexpected finding and qualification loss. p0028 describes: annotation quality examined through structured review, most consequential errors when passage relevant to topic but supports different version/condition, links rubric to near-synonym mapping failure, checks whether output retained decisive concept definition, downstream clinical utility remains missing. c4 captures the near-synonym mapping and qualification aspects which are the core of p0028's annotation quality discussion.",
+          "status": "supported",
+          "unit_id": "u89"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f38:missing_measurement (from p0028). Retention row maps to c4 with reason t000230. The missing measurement of downstream clinical utility is in c6. Retained in the card.",
+          "status": "supported",
+          "unit_id": "u90"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f38:question_counterevidence (from p0028). Retention row maps to c4 with reason t000230. The annotation quality concerns and missing measurement serve as counterevidence. Retained in c4 and c6.",
+          "status": "supported",
+          "unit_id": "u91"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0039"
+          ],
+          "local_id": "c4",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "effects",
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "意外發現：即使加入明確負概念約束，將近義詞映射到語義相鄰但錯誤概念的失敗仍持續存在；部分案例中相關證據存在但在段落轉答案過程中遺失限定條件，此限制促使對機制解釋保持審慎。"
+        }
+      ],
+      "retention_rows": [
+        {
+          "claim_ids": [
+            "c4"
+          ],
+          "obligation_id": "s08:s08-f38:extracted_conditions",
+          "reason": "標註品質檢查與下游臨床效用缺失在c4中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c4"
+          ],
+          "obligation_id": "s08:s08-f38:missing_measurement",
+          "reason": "標註品質檢查與下游臨床效用缺失在c4中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c4"
+          ],
+          "obligation_id": "s08:s08-f38:question_counterevidence",
+          "reason": "標註品質檢查與下游臨床效用缺失在c4中保留。",
+          "status": "included"
+        }
+      ],
+      "reader_findings": [
+        {
+          "attribution": "author_result",
+          "evidence_refs": [
+            "e_5b40e571f0bf55ed411601de"
+          ],
+          "field": "conditions",
+          "local_id": "s08-f38",
+          "obligations": [
+            "missing_measurement"
+          ],
+          "text": "標註品質透過對分歧、模糊問題措辭與省略來源限定的結構化審查來檢視；最嚴重錯誤發生在段落與主題相關但支持不同版本或條件時；此關切將評分準則連結到近義詞映射到相鄰錯誤概念的失敗族；調查者詢問輸出是否保留決定性概念定義、是否將結果歸因於正確來源發布、是否過度陳述證據可建立的範圍；這些檢查非可取代預設主要終點的額外有利結果；下游臨床效用的缺失測量在此練習後仍為缺失，因檢查來源支持不自動測量每個下游結果。"
+        }
+      ],
+      "source_parts": [
+        {
+          "end_byte": 20273,
+          "part_id": "p0028",
+          "start_byte": 19343,
+          "text": "Annotation quality is examined through a structured review of disagreements, ambiguous question wording, and omitted source qualifications. The most consequential errors arise when a passage is relevant to the topic but supports a different version or condition. This concern links the rubric to mapping a near-synonym to a semantically adjacent but wrong concept. Investigators ask whether the output retained the decisive concept definition, whether it attributed the result to the correct source release, and whether it overstated what the evidence could establish. These checks are not additional favorable outcomes that may replace the prespecified primary endpoint. They explain the interpretation of Recall@5 and identify threats to validity. The missing measurement of downstream clinical utility remains missing after this exercise, since checking source support does not automatically measure every downstream outcome.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I03",
+        "paper_id": "s08",
+        "kind": "named_retention_mismatch",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c6"
+        ],
+        "finding_ids": [
+          "s08-f29"
+        ],
+        "obligation_ids": [
+          "s08:s08-f29:applicability",
+          "s08:s08-f29:extracted_conditions"
+        ],
+        "observation": "The disposition expressly says workload 1880 questions against 14200 records is retained in c6. c6 includes costs, missing utility and five-abstract budget, but neither workload count. c1 includes the counts; it is not named by this disposition."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f29:applicability",
+          "unit_id": "u65"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f29:extracted_conditions",
+          "unit_id": "u66"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f29:applicability (conditions from p0047). Retention row maps to c6 with reason t000223: '工作負荷條件1880題對14200筆在c6中保留。' c6 (t000188) states: evidence budget fixed at five retrieved abstracts. p0047 describes: efficiency claims require joint description of resources, performance, workload; workload is 1880 declared questions against 14200 frozen records with five retrieved abstracts. c6 mentions the five-abstract budget; the 1880 and 14200 are in c1. The obligation is about the conditions' applicability, and the workload conditions are distributed across c1 and c6.",
+          "status": "supported",
+          "unit_id": "u65"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f29:extracted_conditions (from p0047). Retention row maps to c6 with reason t000223. The workload conditions (1880 questions, 14200 records, 5 abstracts) are in c1 and c6. Retained across claims.",
+          "status": "supported",
+          "unit_id": "u66"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0044",
+            "s08/p0049"
+          ],
+          "local_id": "c6",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "資源核算：基線每查詢成本USD 0.021，介入USD 0.031；此為虛構每查詢會計，不包含人力、硬體或維護成本。下游臨床效用未測量，不得推斷為零或無變化；證據預算固定為五篇檢出摘要。"
+        }
+      ],
+      "retention_rows": [
+        {
+          "claim_ids": [
+            "c6"
+          ],
+          "obligation_id": "s08:s08-f29:applicability",
+          "reason": "工作負荷條件1880題對14200筆在c6中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c6"
+          ],
+          "obligation_id": "s08:s08-f29:extracted_conditions",
+          "reason": "工作負荷條件1880題對14200筆在c6中保留。",
+          "status": "included"
+        }
+      ],
+      "reader_findings": [
+        {
+          "attribution": "author_result",
+          "evidence_refs": [
+            "e_d76180958d8f9325a0f0cfca"
+          ],
+          "field": "conditions",
+          "local_id": "s08-f29",
+          "obligations": [
+            "applicability"
+          ],
+          "text": "效率主張需資源、效能與工作負載的聯合描述：對 BioGloss-Sim，工作負載為 1880 題聲明問題對 14200 凍結記錄，下游階段供應 5 篇檢索摘要；這些條件應隨任何資源數字比較嘗試一併呈現；服務不同語言組合、更大集合或更嚴格證據政策的系統即使分數相似也可能有不同資源輪廓；所有資源值為評估來源接地審查行為的虛構受控事實。"
+        }
+      ],
+      "source_parts": [
+        {
+          "end_byte": 33438,
+          "part_id": "p0047",
+          "start_byte": 32578,
+          "text": "Efficiency claims require a joint description of resources, performance, and workload. For BioGloss-Sim, the workload consists of 1880 declared questions against 14200 frozen records, with five retrieved abstracts supplied to the downstream stage. Those conditions should accompany any attempt to compare resource figures. A system serving a different language mix, a larger collection, or a more demanding evidence policy could have a different resource profile even if its score were similar. We report the observed accounting status and leave the unobserved components unresolved. This restraint is especially important in a synthetic benchmark: plausible numerical detail should never be mistaken for a measurement of an actual service. All resource values in this manuscript are fictional controlled facts for evaluating source-grounded review behavior.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I04",
+        "paper_id": "s08",
+        "kind": "named_retention_mismatch",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c11"
+        ],
+        "finding_ids": [
+          "s08-f33"
+        ],
+        "obligation_ids": [
+          "s08:s08-f33:applicability",
+          "s08:s08-f33:extracted_conditions",
+          "s08:s08-f33:missing_measurement",
+          "s08:s08-f33:question_counterevidence"
+        ],
+        "observation": "The disposition claims that unmeasured downstream clinical utility and the Recall@5 operational boundary are retained in c11. c11 is about annotators, conflicts and consensus-label timing; it does not state the missing clinical-utility result or name Recall@5. Missing utility appears in c6, not the named claim."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f33:applicability",
+          "unit_id": "u74"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f33:extracted_conditions",
+          "unit_id": "u75"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f33:missing_measurement",
+          "unit_id": "u76"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f33:question_counterevidence",
+          "unit_id": "u77"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f33:applicability (conditions from p0005). Retention row maps to c11 with reason t000226: '下游臨床效用未測量與Recall@5操作定義在c11中保留。' c11 (t000193) describes the annotation process. p0005 describes: motivating failure is mapping near-synonym to adjacent wrong concept, intervention uses explicit negative concept constraints, separates retrieved from justified, Recall@5 operational definition addresses only the outcome in this paper, downstream clinical utility not measured. The downstream clinical utility is in c6, the near-synonym failure is in c4, and the Recall@5 scope is in c2. The obligation is about the conditions' applicability, and the relevant content is distributed across c2, c4, c6, and c11.",
+          "status": "supported",
+          "unit_id": "u74"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f33:extracted_conditions (from p0005). Retention row maps to c11 with reason t000226. The conditions from p0005 (near-synonym failure, negative concept constraints, Recall@5 scope) are distributed across c4, c5, and c6. Retained in the card.",
+          "status": "supported",
+          "unit_id": "u75"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f33:missing_measurement (from p0005). Retention row maps to c11 with reason t000226. The missing measurement of downstream clinical utility is in c6. Retained in the card.",
+          "status": "supported",
+          "unit_id": "u76"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f33:question_counterevidence (from p0005). Retention row maps to c11 with reason t000226. The statement that downstream clinical utility was not measured serves as counterevidence to utility claims. Retained in c6.",
+          "status": "supported",
+          "unit_id": "u77"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0026"
+          ],
+          "local_id": "c11",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "標註流程：標註員檢查相關虛構摘要及其本地上下文，決定請求資訊是否在來源聲明條件下獲支持；矛盾段落明確標記，共識標籤在比較輸出摘要前凍結。此過程減少結果依賴標註，但不消除作者基準限制或證明評分規則捕捉所有實用維度。"
+        }
+      ],
+      "retention_rows": [
+        {
+          "claim_ids": [
+            "c11"
+          ],
+          "obligation_id": "s08:s08-f33:applicability",
+          "reason": "下游臨床效用未測量與Recall@5操作定義在c11中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c11"
+          ],
+          "obligation_id": "s08:s08-f33:extracted_conditions",
+          "reason": "下游臨床效用未測量與Recall@5操作定義在c11中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c11"
+          ],
+          "obligation_id": "s08:s08-f33:missing_measurement",
+          "reason": "下游臨床效用未測量與Recall@5操作定義在c11中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c11"
+          ],
+          "obligation_id": "s08:s08-f33:question_counterevidence",
+          "reason": "下游臨床效用未測量與Recall@5操作定義在c11中保留。",
+          "status": "included"
+        }
+      ],
+      "reader_findings": [
+        {
+          "attribution": "author_result",
+          "evidence_refs": [
+            "e_4b8d6e08f4dd6b401f47d39a"
+          ],
+          "field": "conditions",
+          "local_id": "s08-f33",
+          "obligations": [
+            "missing_measurement",
+            "applicability"
+          ],
+          "text": "動機失敗為將近義詞映射到語義相鄰但錯誤的概念；在此情境中，表面相關段落可含正確詞語但指涉不相容的對象、版本或條件；干預因此使用顯式負概念約束作為證據選擇之約束，意圖改變可用支持而非重寫底層來源陳述；研究區分「候選被檢索」之命題與「答案有依據」之較強命題；下游臨床效用未測量，故關於該性質的結論留在觀察證據之外。"
+        }
+      ],
+      "source_parts": [
+        {
+          "end_byte": 2497,
+          "part_id": "p0005",
+          "start_byte": 1564,
+          "text": "The motivating failure is mapping a near-synonym to a semantically adjacent but wrong concept. In this setting a superficially relevant passage can contain the correct words while referring to an incompatible object, version, or condition. The intervention therefore uses explicit negative concept constraints as a constraint on evidence selection. The constraint is intended to alter the available support, not to rewrite the underlying source statements. We separate the proposition that a candidate was retrieved from the stronger proposition that an answer is justified. This distinction matters for Recall@5, whose operational definition addresses only the outcome specified in this paper. We do not substitute a favorable result on that outcome for measurements of every downstream property. In particular, downstream clinical utility was not measured, so conclusions about that property remain outside the observed evidence.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I05",
+        "paper_id": "s08",
+        "kind": "named_retention_mismatch",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c5"
+        ],
+        "finding_ids": [
+          "s08-f35"
+        ],
+        "obligation_ids": [
+          "s08:s08-f35:applicability",
+          "s08:s08-f35:extracted_conditions"
+        ],
+        "observation": "The finding concerns equal output policies/supported-answer definitions and source authority when an answer contradicts a source. The disposition says these policies are retained in c5, but c5 states the randomized experiment and narrow causal scope, with no equal-output-policy or source-authority statement. Shared methodological topic is not preservation."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f35:applicability",
+          "unit_id": "u83"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f35:extracted_conditions",
+          "unit_id": "u84"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f35:applicability (conditions from p0018). Retention row maps to c5 with reason t000228: '輸出政策一致與來源權威性在c5中保留。' c5 (t000187) states: randomized query-pair controlled experiment, same frozen version and question definitions, narrow causal interpretation. p0018 describes: protocol requires same output policy and same definition of supported answer, pipeline not permitted to manufacture source statement, source text authoritative when contradicts generated answer. c5 captures the same-conditions aspect which is the core of p0018's protocol requirements.",
+          "status": "supported",
+          "unit_id": "u83"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f35:extracted_conditions (from p0018). Retention row maps to c5 with reason t000228. The conditions (same output policy, source authority) are partially in c5. Retained in the card.",
+          "status": "supported",
+          "unit_id": "u84"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0015"
+          ],
+          "local_id": "c5",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "effects",
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "研究採用隨機查詢對照實驗，介入條件為受控詞彙橋接，對照為字面詞彙-稠密混合檢索，兩條件使用相同凍結版本與問題定義；此設計僅支持對指定軟體對照的狹義因果解讀，不建立下游真實世界效果。"
+        }
+      ],
+      "retention_rows": [
+        {
+          "claim_ids": [
+            "c5"
+          ],
+          "obligation_id": "s08:s08-f35:applicability",
+          "reason": "輸出政策一致與來源權威性在c5中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c5"
+          ],
+          "obligation_id": "s08:s08-f35:extracted_conditions",
+          "reason": "輸出政策一致與來源權威性在c5中保留。",
+          "status": "included"
+        }
+      ],
+      "reader_findings": [
+        {
+          "attribution": "author_result",
+          "evidence_refs": [
+            "e_3b6c87e12cb8f199bfa6a3a5"
+          ],
+          "field": "conditions",
+          "local_id": "s08-f35",
+          "obligations": [
+            "applicability"
+          ],
+          "text": "協議要求兩條件維持相同輸出政策與相同「有依據答案」定義；管線不允許僅因檢索到較方便記錄而製造來源陳述；來源文本在與生成答案矛盾時保持權威；調查者檢查含鄰近概念定義的示例，因短摘錄在移除限制句後可能看似有說服力；這些檢查 informs 錯誤分類但不取代完整評分集；有利示例集合不估計 Recall@5，負示例可揭示真實失敗模式而不顯示該失敗多常見。"
+        }
+      ],
+      "source_parts": [
+        {
+          "end_byte": 13088,
+          "part_id": "p0018",
+          "start_byte": 12226,
+          "text": "The protocol requires the two conditions to keep the same output policy and the same definition of a supported answer. A pipeline is not permitted to manufacture a source statement merely because it retrieves a more convenient record. The source text remains authoritative when it contradicts the generated answer. Investigators inspect examples containing a nearby concept definition, since a short excerpt can appear persuasive after the limiting sentence is removed. These inspections inform the error taxonomy, but they do not replace the full scoring set. A collection of favorable examples would not estimate Recall@5. Conversely, a negative example can reveal a real failure mode without showing how common that failure is. We preserve both types of evidence and state which conclusions depend on aggregate scoring rather than on qualitative inspection.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I06",
+        "paper_id": "s08",
+        "kind": "named_retention_mismatch",
+        "certainty": "confirmed",
+        "claim_ids": [
+          "c4"
+        ],
+        "finding_ids": [
+          "s08-f36"
+        ],
+        "obligation_ids": [
+          "s08:s08-f36:applicability",
+          "s08:s08-f36:extracted_conditions"
+        ],
+        "observation": "The finding states a minimum-complete-context assembly rule, value/unit/population binding and table caption/notes retention. The disposition names c4 and claims this rule is retained. c4 describes evidence losing a qualification in error traces, not the assembly protocol or table/context requirements."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "confirmed_reviewer_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f36:applicability",
+          "unit_id": "u85"
+        },
+        {
+          "kind": "raw_retention",
+          "obligation_id": "s08:s08-f36:extracted_conditions",
+          "unit_id": "u86"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f36:applicability (conditions from p0021). Retention row maps to c4 with reason t000229: '證據組裝保留最小完整上下文在c4中保留。' c4 (t000186) states: unexpected finding about near-synonym mapping, qualification loss in passage-to-answer. p0021 describes: evidence assembly preserves smallest complete context, quantitative value must remain connected to unit/population/qualification, table caption and notes accompany selected cells, quotation matching not sufficient proof of scientific support. c4 mentions qualification loss which is the core concern of p0021's evidence assembly rules.",
+          "status": "supported",
+          "unit_id": "u85"
+        },
+        {
+          "claim_checks": [],
+          "reason": "Obligation s08-f36:extracted_conditions (from p0021). Retention row maps to c4 with reason t000229. The evidence assembly conditions are partially in c4 (qualification loss). Retained in the card.",
+          "status": "supported",
+          "unit_id": "u86"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0039"
+          ],
+          "local_id": "c4",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "effects",
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "意外發現：即使加入明確負概念約束，將近義詞映射到語義相鄰但錯誤概念的失敗仍持續存在；部分案例中相關證據存在但在段落轉答案過程中遺失限定條件，此限制促使對機制解釋保持審慎。"
+        }
+      ],
+      "retention_rows": [
+        {
+          "claim_ids": [
+            "c4"
+          ],
+          "obligation_id": "s08:s08-f36:applicability",
+          "reason": "證據組裝保留最小完整上下文在c4中保留。",
+          "status": "included"
+        },
+        {
+          "claim_ids": [
+            "c4"
+          ],
+          "obligation_id": "s08:s08-f36:extracted_conditions",
+          "reason": "證據組裝保留最小完整上下文在c4中保留。",
+          "status": "included"
+        }
+      ],
+      "reader_findings": [
+        {
+          "attribution": "author_result",
+          "evidence_refs": [
+            "e_57bb5b70312841ad416a9e24"
+          ],
+          "field": "conditions",
+          "local_id": "s08-f36",
+          "obligations": [
+            "applicability"
+          ],
+          "text": "證據組裝保留能支持或反駁答案的最小完整上下文：定量值必須保持與其單位、族群與相關限定相連；表格含相關值時，其標題與註記隨選取儲存格一併保留；鄰近概念定義在改變適用性時被包含；此規則防止機械正確的引用在摘要期間取得更廣意義；引用匹配不被視為科學支持的充分證明，它建立詞語出現在來源中，而這些詞語是否支持整個聲明需另外的上下文判斷。"
+        }
+      ],
+      "source_parts": [
+        {
+          "end_byte": 14928,
+          "part_id": "p0021",
+          "start_byte": 14066,
+          "text": "Evidence assembly preserves the smallest complete context that can support or refute an answer. In particular, a quantitative value must remain connected to its unit, population, and relevant qualification. Where a table contains the relevant value, its caption and notes accompany the selected cells. A nearby concept definition is included when it changes applicability. This rule prevents a mechanically correct quotation from acquiring a broader meaning during summarization. The failure family of mapping a near-synonym to a semantically adjacent but wrong concept illustrates why this additional context is necessary. We do not treat quotation matching as sufficient proof of scientific support. It establishes that words appeared in the source, whereas the question of whether those words support the whole claim requires a separate contextual judgment.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I07",
+        "paper_id": "s01",
+        "kind": "evidentiary_strength_precision",
+        "certainty": "requires_scientific_judgment",
+        "claim_ids": [
+          "c5"
+        ],
+        "source_refs": [
+          "s01/p0032"
+        ],
+        "observation": "The original says qualitative traces suggest the mechanism changes evidence selection. c5 says traces show (顯示) it changed (改變了), while retaining bounded-design caveats. This may strengthen the evidentiary verb; it should be distinguished from an unequivocal factual contradiction."
+      },
+      "reviewer_task_id": "t_bfac0e4155ad4df2ae60",
+      "reviewer_context_id": "verifier-eed43bac-5328-4e6f-9745-beab08d2cc77",
+      "review_id": "pr2_44fbc43216f17c3361d13a12",
+      "host_classification": "precision_concern_not_counted_as_confirmed_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "claim_id": "c5",
+          "kind": "claim_support",
+          "minimum_unit_ids": [
+            "m9",
+            "m10"
+          ],
+          "source_refs": [
+            "s01/p0032",
+            "s01/p0033"
+          ],
+          "unit_id": "u5"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [
+            {
+              "claim_relation": "The claim states the mechanism interpretation is bounded by the randomized query-level controlled experiment, qualitative traces show entity-aware query expansion changes which museum object record is selected and how its qualifications survive evidence assembly, the pattern is consistent with the intended intervention, but extrapolation to other mechanisms or practical outcomes exceeds the assigned comparison. s32 states all of these directly. The claim's phrasing '此模式與預定介入一致' matches 'This pattern is consistent with the intended intervention'.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m9",
+              "observations": [
+                {
+                  "quote": "A numerical contrast can be compatible with several mechanisms. In ArchiveQA-Sim, qualitative traces suggest that entity-aware query expansion changes which museum object record is selected and how its qualifications survive evidence assembly. This pattern is consistent with the intended intervention, but the interpretation remains bounded by the randomized query-level controlled experiment. The assigned comparison concerns the specified software component, and extrapolation to other mechanisms or practical outcomes would exceed what was assigned. A plausible narrative does not repair a design limitation. We therefore separate the reported score change from a broader claim that the intervention is the sole cause of a practical improvement. The result also does not imply that single-pass dense retrieval is universally inferior: the reference pipeline may behave differently under another corpus composition, update schedule, or evidence budget. Those counterfactual settings were not measured here.\n\n",
+                  "source_ref": "s01/p0032"
+                }
+              ],
+              "qualification_check": "The claim preserves the bounded interpretation and the distinction between the observed pattern and extrapolation. No causal overstatement detected.",
+              "reason": "m9's mechanism interpretation and its bounds are directly supported by s32.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "The claim states single-pass dense retrieval is not proven universally inferior, and behavior under other corpus compositions, update schedules, or evidence budgets was not measured here. s32 states: 'The result also does not imply that single-pass dense retrieval is universally inferior: the reference pipeline may behave differently under another corpus composition, update schedule, or evidence budget. Those counterfactual settings were not measured here.' Direct match.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m10",
+              "observations": [
+                {
+                  "quote": "A numerical contrast can be compatible with several mechanisms. In ArchiveQA-Sim, qualitative traces suggest that entity-aware query expansion changes which museum object record is selected and how its qualifications survive evidence assembly. This pattern is consistent with the intended intervention, but the interpretation remains bounded by the randomized query-level controlled experiment. The assigned comparison concerns the specified software component, and extrapolation to other mechanisms or practical outcomes would exceed what was assigned. A plausible narrative does not repair a design limitation. We therefore separate the reported score change from a broader claim that the intervention is the sole cause of a practical improvement. The result also does not imply that single-pass dense retrieval is universally inferior: the reference pipeline may behave differently under another corpus composition, update schedule, or evidence budget. Those counterfactual settings were not measured here.\n\n",
+                  "source_ref": "s01/p0032"
+                }
+              ],
+              "qualification_check": "The claim correctly preserves the negation (not proven universally inferior) and the unmeasured counterfactual settings. No reversal of the evidential limit detected.",
+              "reason": "m10 is a direct restatement of the unmeasured counterfactual settings in s32.",
+              "source_relation": "direct"
+            }
+          ],
+          "reason": "m9: s32 states 'qualitative traces suggest that entity-aware query expansion changes which museum object record is selected and how its qualifications survive evidence assembly. This pattern is consistent with the intended intervention, but the interpretation remains bounded by the randomized query-level controlled experiment. The assigned comparison concerns the specified software component, and extrapolation to other mechanisms or practical outcomes would exceed what was assigned.' m10: s32 states 'The result also does not imply that single-pass dense retrieval is universally inferior: the reference pipeline may behave differently under another corpus composition, update schedule, or evidence budget. Those counterfactual settings were not measured here.' All components match.",
+          "status": "supported",
+          "unit_id": "u5"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s01/p0032",
+            "s01/p0033"
+          ],
+          "local_id": "c5",
+          "population_paper_ids": [
+            "s01"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "effects",
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "機制解讀受限於隨機查詢層級受控實驗：定性追蹤顯示實體感知查詢擴展改變了被選取的博物館物件記錄及其限定條件在證據組裝中的保留方式，此模式與預定介入一致，但外推到其他機制或實際結果超出受指派比較範圍；單次稠密檢索並非被證明普遍較差，其他語料組成、更新排程或證據預算下的行為未在此測量。"
+        }
+      ],
+      "retention_rows": [],
+      "reader_findings": [],
+      "source_parts": [
+        {
+          "end_byte": 22647,
+          "part_id": "p0032",
+          "start_byte": 21636,
+          "text": "A numerical contrast can be compatible with several mechanisms. In ArchiveQA-Sim, qualitative traces suggest that entity-aware query expansion changes which museum object record is selected and how its qualifications survive evidence assembly. This pattern is consistent with the intended intervention, but the interpretation remains bounded by the randomized query-level controlled experiment. The assigned comparison concerns the specified software component, and extrapolation to other mechanisms or practical outcomes would exceed what was assigned. A plausible narrative does not repair a design limitation. We therefore separate the reported score change from a broader claim that the intervention is the sole cause of a practical improvement. The result also does not imply that single-pass dense retrieval is universally inferior: the reference pipeline may behave differently under another corpus composition, update schedule, or evidence budget. Those counterfactual settings were not measured here.\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I08",
+        "paper_id": "s08",
+        "kind": "resource_boundary_precision",
+        "certainty": "requires_scientific_judgment",
+        "claim_ids": [
+          "c6"
+        ],
+        "source_refs": [
+          "s08/p0044",
+          "s08/p0049"
+        ],
+        "observation": "The original cost paragraph excludes unlogged maintenance work; c6 says maintenance costs are excluded without the unlogged qualification. The broad accounting caution is retained, but the exclusion boundary is less precise."
+      },
+      "reviewer_task_id": "t_5b7565e24eab46ecb936",
+      "reviewer_context_id": "verifier-93679eae-1a64-4183-b0ed-92de152aec33",
+      "review_id": "pr2_4928dec7b86a629f0150def6",
+      "host_classification": "precision_concern_not_counted_as_confirmed_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "claim_id": "c6",
+          "kind": "claim_support",
+          "minimum_unit_ids": [
+            "m11",
+            "m12",
+            "m13",
+            "m14"
+          ],
+          "source_refs": [
+            "s08/p0044",
+            "s08/p0049"
+          ],
+          "unit_id": "u6"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [
+            {
+              "claim_relation": "Claim states baseline per-query cost USD 0.021, intervention USD 0.031.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m11",
+              "observations": [
+                {
+                  "quote": "Resource accounting is reported separately from Recall@5. The fictional baseline monetary cost was USD 0.021 per query, and intervention cost was USD 0.031 per query. Those accounting observations do not measure staffing effort, hardware ownership, or unlogged maintenance work. Table 2 preserves this distinction between the score outcome and resource observations. The interpretation cannot be reversed by assuming that a compact pipeline is free or that an additional component must be expensive. Both assumptions would require measurements absent from the relevant source. Where a monetary value is reported, its unit is United States dollars per query under the fictional accounting boundary. It does not represent a total organizational budget, an estimate of staffing costs, or a claim about a live provider's price. The resource section consequently states the accounting boundary before discussing efficiency, and keeps unavailable fields explicitly unavailable.\n\n",
+                  "source_ref": "s08/p0044"
+                },
+                {
+                  "quote": "| Quantity | Baseline | Intervention | Interpretation boundary |\n| --- | --- | --- | --- |\n| Monetary cost, USD/query | 0.021 | 0.031 | Fictional per-query accounting only |\n| downstream clinical utility | not measured | not measured | No zero or null result may be inferred |\n| Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study |\n\n",
+                  "source_ref": "s08/p0049"
+                }
+              ],
+              "qualification_check": "s44: 'The fictional baseline monetary cost was USD 0.021 per query, and intervention cost was USD 0.031 per query.' Table 2 in s49 confirms.",
+              "reason": "Cost values match exactly.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim states this is fictional per-query accounting that does not include staffing, hardware, or maintenance costs.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m12",
+              "observations": [
+                {
+                  "quote": "Resource accounting is reported separately from Recall@5. The fictional baseline monetary cost was USD 0.021 per query, and intervention cost was USD 0.031 per query. Those accounting observations do not measure staffing effort, hardware ownership, or unlogged maintenance work. Table 2 preserves this distinction between the score outcome and resource observations. The interpretation cannot be reversed by assuming that a compact pipeline is free or that an additional component must be expensive. Both assumptions would require measurements absent from the relevant source. Where a monetary value is reported, its unit is United States dollars per query under the fictional accounting boundary. It does not represent a total organizational budget, an estimate of staffing costs, or a claim about a live provider's price. The resource section consequently states the accounting boundary before discussing efficiency, and keeps unavailable fields explicitly unavailable.\n\n",
+                  "source_ref": "s08/p0044"
+                },
+                {
+                  "quote": "| Quantity | Baseline | Intervention | Interpretation boundary |\n| --- | --- | --- | --- |\n| Monetary cost, USD/query | 0.021 | 0.031 | Fictional per-query accounting only |\n| downstream clinical utility | not measured | not measured | No zero or null result may be inferred |\n| Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study |\n\n",
+                  "source_ref": "s08/p0049"
+                }
+              ],
+              "qualification_check": "s44: 'Those accounting observations do not measure staffing effort, hardware ownership, or unlogged maintenance work.' s49 Table 2 note: 'Fictional per-query accounting only.'",
+              "reason": "The accounting boundary is explicitly stated.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim states downstream clinical utility was not measured and must not be inferred as zero or unchanged.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m13",
+              "observations": [
+                {
+                  "quote": "| Quantity | Baseline | Intervention | Interpretation boundary |\n| --- | --- | --- | --- |\n| Monetary cost, USD/query | 0.021 | 0.031 | Fictional per-query accounting only |\n| downstream clinical utility | not measured | not measured | No zero or null result may be inferred |\n| Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study |\n\n",
+                  "source_ref": "s08/p0049"
+                }
+              ],
+              "qualification_check": "s49 Table 2: 'downstream clinical utility | not measured | not measured | No zero or null result may be inferred.' The not-measured status and prohibition on inferring zero are explicit in the cited part.",
+              "reason": "The not-measured status and zero-inference prohibition are explicitly in Table 2 (s49).",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "Claim states the evidence budget is fixed at five retrieved abstracts.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m14",
+              "observations": [
+                {
+                  "quote": "| Quantity | Baseline | Intervention | Interpretation boundary |\n| --- | --- | --- | --- |\n| Monetary cost, USD/query | 0.021 | 0.031 | Fictional per-query accounting only |\n| downstream clinical utility | not measured | not measured | No zero or null result may be inferred |\n| Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study |\n\n",
+                  "source_ref": "s08/p0049"
+                }
+              ],
+              "qualification_check": "s49 Table 2: 'Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study.'",
+              "reason": "The fixed five-abstract budget is explicitly in Table 2.",
+              "source_relation": "direct"
+            }
+          ],
+          "reason": "m11: s44 states fictional baseline monetary cost USD 0.021 per query, intervention USD 0.031 per query. m12: s44 states these accounting observations do not measure staffing effort, hardware ownership, or unlogged maintenance work; s49 Table 2 confirms 'Fictional per-query accounting only'. m13: s49 Table 2 lists downstream clinical utility as 'not measured' with 'No zero or null result may be inferred'; s50 notes confirm not measured must not be replaced with zero. m14: s49 Table 2 confirms evidence budget of five retrieved abstracts, fixed within the study. All match.",
+          "status": "supported",
+          "unit_id": "u6"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s08/p0044",
+            "s08/p0049"
+          ],
+          "local_id": "c6",
+          "population_paper_ids": [
+            "s08"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "conditions"
+          ],
+          "scope": "individual",
+          "text": "資源核算：基線每查詢成本USD 0.021，介入USD 0.031；此為虛構每查詢會計，不包含人力、硬體或維護成本。下游臨床效用未測量，不得推斷為零或無變化；證據預算固定為五篇檢出摘要。"
+        }
+      ],
+      "retention_rows": [],
+      "reader_findings": [],
+      "source_parts": [
+        {
+          "end_byte": 30932,
+          "part_id": "p0044",
+          "start_byte": 29959,
+          "text": "Resource accounting is reported separately from Recall@5. The fictional baseline monetary cost was USD 0.021 per query, and intervention cost was USD 0.031 per query. Those accounting observations do not measure staffing effort, hardware ownership, or unlogged maintenance work. Table 2 preserves this distinction between the score outcome and resource observations. The interpretation cannot be reversed by assuming that a compact pipeline is free or that an additional component must be expensive. Both assumptions would require measurements absent from the relevant source. Where a monetary value is reported, its unit is United States dollars per query under the fictional accounting boundary. It does not represent a total organizational budget, an estimate of staffing costs, or a claim about a live provider's price. The resource section consequently states the accounting boundary before discussing efficiency, and keeps unavailable fields explicitly unavailable.\n\n"
+        },
+        {
+          "end_byte": 33892,
+          "part_id": "p0049",
+          "start_byte": 33514,
+          "text": "| Quantity | Baseline | Intervention | Interpretation boundary |\n| --- | --- | --- | --- |\n| Monetary cost, USD/query | 0.021 | 0.031 | Fictional per-query accounting only |\n| downstream clinical utility | not measured | not measured | No zero or null result may be inferred |\n| Evidence budget | five retrieved abstracts | five retrieved abstracts | Fixed within this study |\n\n"
+        }
+      ]
+    },
+    {
+      "independent_finding": {
+        "id": "I09",
+        "paper_id": "s01",
+        "kind": "population_label_precision",
+        "certainty": "requires_scientific_judgment",
+        "claim_ids": [
+          "c3"
+        ],
+        "source_refs": [
+          "s01/p0035",
+          "s01/p0036",
+          "s01/p0038"
+        ],
+        "observation": "The cited subgroup is noisy curator-name queries; c3 calls it noisy curator-surname queries. Surname ambiguity motivates another part of the paper, but the subgroup citation does not explicitly restrict all names to surnames. This is a translation/scope precision concern, not a numeric discrepancy."
+      },
+      "reviewer_task_id": "t_bfac0e4155ad4df2ae60",
+      "reviewer_context_id": "verifier-eed43bac-5328-4e6f-9745-beab08d2cc77",
+      "review_id": "pr2_44fbc43216f17c3361d13a12",
+      "host_classification": "precision_concern_not_counted_as_confirmed_false_pass",
+      "reviewer_detected_issue": false,
+      "required_units": [
+        {
+          "claim_id": "c3",
+          "kind": "claim_support",
+          "minimum_unit_ids": [
+            "m5",
+            "m6"
+          ],
+          "source_refs": [
+            "s01/p0035",
+            "s01/p0036",
+            "s01/p0038"
+          ],
+          "unit_id": "u3"
+        }
+      ],
+      "verdicts": [
+        {
+          "claim_checks": [
+            {
+              "claim_relation": "The claim states the prespecified subgroup (noisy curator-name queries) has baseline Recall@10 0.610, intervention 0.600, difference -0.010, 95% CI -0.040 to +0.020. s35 Table 1 confirms: noisy curator-name queries | 0.610 | 0.600 | -0.010 | [-0.040, +0.020]. s38 confirms the same values in prose. All values match exactly.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m5",
+              "observations": [
+                {
+                  "quote": "| Evaluation set | Baseline | Intervention | Difference | 95% CI |\n| --- | --- | --- | --- | --- |\n| All eligible questions | 0.684 | 0.752 | +0.068 | [+0.041, +0.095] |\n| noisy curator-name queries | 0.610 | 0.600 | -0.010 | [-0.040, +0.020] |\n\n",
+                  "source_ref": "s01/p0035"
+                },
+                {
+                  "quote": "The prespecified subgroup consists of noisy curator-name queries. Its baseline Recall@10 was 0.610, and its intervention score was 0.600. The subgroup contrast was -0.010, with a ninety-five percent confidence interval from -0.040 to +0.020. The subgroup interval includes zero; the study does not establish a clear subgroup benefit. This observation must be retained beside the aggregate result. It is not an acceptable summary to state that every query benefited when this row is null or adverse. The subgroup also illustrates why a study can offer supporting evidence for a general mechanism while simultaneously providing counterevidence to a stronger, universal claim. The two observations are scientifically compatible when their scopes are stated explicitly.\n\n",
+                  "source_ref": "s01/p0038"
+                }
+              ],
+              "qualification_check": "The claim correctly identifies this as the prespecified subgroup. The negative difference and CI crossing zero are accurately reported.",
+              "reason": "All numeric values in m5 match s35 and s38 exactly.",
+              "source_relation": "direct"
+            },
+            {
+              "claim_relation": "The claim states the interval includes zero, the study does not establish a clear subgroup benefit, the interval cannot prove absence of harm or clear subgroup benefit, and the result must be retained alongside the aggregate. s38 states: 'The subgroup interval includes zero; the study does not establish a clear subgroup benefit. This observation must be retained beside the aggregate result.' s36 notes: 'A subgroup interval containing zero does not establish absence of harm or a clear subgroup benefit.' All qualifications are directly supported.",
+              "conclusion": "supported",
+              "minimum_unit_id": "m6",
+              "observations": [
+                {
+                  "quote": "The prespecified subgroup consists of noisy curator-name queries. Its baseline Recall@10 was 0.610, and its intervention score was 0.600. The subgroup contrast was -0.010, with a ninety-five percent confidence interval from -0.040 to +0.020. The subgroup interval includes zero; the study does not establish a clear subgroup benefit. This observation must be retained beside the aggregate result. It is not an acceptable summary to state that every query benefited when this row is null or adverse. The subgroup also illustrates why a study can offer supporting evidence for a general mechanism while simultaneously providing counterevidence to a stronger, universal claim. The two observations are scientifically compatible when their scopes are stated explicitly.\n\n",
+                  "source_ref": "s01/p0038"
+                },
+                {
+                  "quote": "Table 1 notes. Difference means intervention minus baseline on the native Recall@10 scale; higher is better. Intervals are ninety-five percent confidence intervals for the contrast, not intervals for the separate condition means. A subgroup interval containing zero does not establish absence of harm or a clear subgroup benefit.\n\n",
+                  "source_ref": "s01/p0036"
+                }
+              ],
+              "qualification_check": "The claim preserves the null result interpretation (CI includes zero, no clear benefit established) and the requirement to retain the subgroup alongside the aggregate. No dilution of the adverse/null result detected.",
+              "reason": "m6's qualifications are directly supported by s38 and s36 with matching scope limitations.",
+              "source_relation": "direct"
+            }
+          ],
+          "reason": "m5: s35 Table 1 shows the noisy curator-name queries row: baseline 0.610, intervention 0.600, difference -0.010, 95% CI [-0.040, +0.020]. s38 confirms: 'Its baseline Recall@10 was 0.610, and its intervention score was 0.600. The subgroup contrast was -0.010, with a ninety-five percent confidence interval from -0.040 to +0.020.' m6: s38 states 'The subgroup interval includes zero; the study does not establish a clear subgroup benefit. This observation must be retained beside the aggregate result.' s36 Table 1 notes state 'A subgroup interval containing zero does not establish absence of harm or a clear subgroup benefit.' All values and qualifications match.",
+          "status": "supported",
+          "unit_id": "u3"
+        }
+      ],
+      "actual_named_claims": [
+        {
+          "attribution": "source_finding",
+          "evidence_refs": [
+            "s01/p0035",
+            "s01/p0036",
+            "s01/p0038"
+          ],
+          "local_id": "c3",
+          "population_paper_ids": [
+            "s01"
+          ],
+          "premise_claim_ids": [],
+          "question_ids": [
+            "effects"
+          ],
+          "scope": "individual",
+          "text": "預先指定子群（含噪策展人姓氏查詢）基線 Recall@10 為 0.610，介入為 0.600，差值 -0.010，95% 區間 -0.040 至 +0.020；區間包含零，研究未建立明確子群效益，且該子群區間不能證明無害或明確子群效益，此結果必須與總體結果並列保留。"
+        }
+      ],
+      "retention_rows": [],
+      "reader_findings": [],
+      "source_parts": [
+        {
+          "end_byte": 23814,
+          "part_id": "p0035",
+          "start_byte": 23568,
+          "text": "| Evaluation set | Baseline | Intervention | Difference | 95% CI |\n| --- | --- | --- | --- | --- |\n| All eligible questions | 0.684 | 0.752 | +0.068 | [+0.041, +0.095] |\n| noisy curator-name queries | 0.610 | 0.600 | -0.010 | [-0.040, +0.020] |\n\n"
+        },
+        {
+          "end_byte": 24145,
+          "part_id": "p0036",
+          "start_byte": 23814,
+          "text": "Table 1 notes. Difference means intervention minus baseline on the native Recall@10 scale; higher is better. Intervals are ninety-five percent confidence intervals for the contrast, not intervals for the separate condition means. A subgroup interval containing zero does not establish absence of harm or a clear subgroup benefit.\n\n"
+        },
+        {
+          "end_byte": 24983,
+          "part_id": "p0038",
+          "start_byte": 24216,
+          "text": "The prespecified subgroup consists of noisy curator-name queries. Its baseline Recall@10 was 0.610, and its intervention score was 0.600. The subgroup contrast was -0.010, with a ninety-five percent confidence interval from -0.040 to +0.020. The subgroup interval includes zero; the study does not establish a clear subgroup benefit. This observation must be retained beside the aggregate result. It is not an acceptable summary to state that every query benefited when this row is null or adverse. The subgroup also illustrates why a study can offer supporting evidence for a general mechanism while simultaneously providing counterevidence to a stronger, universal claim. The two observations are scientifically compatible when their scopes are stated explicitly.\n\n"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "current_claims_independently_checked": 21,
+    "confirmed_groups_missed": 6,
+    "local_citation_gap_groups": 1,
+    "named_retention_groups": 5,
+    "named_retention_duty_rows": 13,
+    "independent_precision_concerns_not_counted_as_confirmed": 3,
+    "all_reviewed_units_supported": true
+  },
+  "limits": [
+    "Five named-retention groups are mapping/scope defects, not thirteen independent numeric contradictions.",
+    "Several facts remain present elsewhere in the card. That does not validate an included disposition naming the wrong claims.",
+    "S08 initial out-of-own-reference selector rejection is mechanical format enforcement, not detection of any of these scientific defects.",
+    "Whole-unit deterministic expansion preserves the original text. It does not establish entailment or named-content preservation.",
+    "The three precision concerns remain separately uncertain; no false-pass total includes them.",
+    "No complete review/publication approval, provider speed estimate, or 100-paper inference is made."
+  ]
+}

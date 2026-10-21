@@ -1,0 +1,2542 @@
+{
+  "schema": "skill-interface-jsonschemas/1",
+  "created_utc": "2026-10-20T19:47:50.613943+00:00",
+  "source_runtime": "C:\\Users\\c9363\\Desktop\\deepagents-practice\\evidence-literature-review-skills\\skills\\literature-review\\scripts\\runtime",
+  "provenance": "Pydantic model_json_schema() or the actual native schema helper; no model/API invocation.",
+  "scope_note": "These are model submission/tool schemas. The source, draft packet, and native-proof-input envelopes use program validators, not exported Pydantic input schemas.",
+  "schemas": {
+    "ReaderSubmission": {
+      "$defs": {
+        "FieldAssessment": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "enum": [
+                "research_question",
+                "contributions",
+                "method",
+                "evaluation",
+                "results",
+                "limitations",
+                "conditions",
+                "relevance",
+                "unexpected_findings"
+              ],
+              "title": "Field",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "extracted",
+                "not_reported",
+                "not_applicable",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field",
+            "status",
+            "reason"
+          ],
+          "title": "FieldAssessment",
+          "type": "object"
+        },
+        "Finding": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "field": {
+              "enum": [
+                "research_question",
+                "contributions",
+                "method",
+                "evaluation",
+                "results",
+                "limitations",
+                "conditions",
+                "relevance",
+                "unexpected_findings"
+              ],
+              "title": "Field",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "attribution": {
+              "enum": [
+                "author_result",
+                "author_limitation",
+                "secondary_report",
+                "context",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/SourceQuote"
+              },
+              "minItems": 1,
+              "title": "Evidence",
+              "type": "array"
+            },
+            "obligations": {
+              "description": "Required assessment: list all applicable retention categories; use [] only when none apply.",
+              "items": {
+                "enum": [
+                  "adverse_result",
+                  "null_result",
+                  "persistent_failure",
+                  "missing_measurement",
+                  "critical_limitation",
+                  "applicability"
+                ],
+                "type": "string"
+              },
+              "title": "Obligations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "field",
+            "text",
+            "attribution",
+            "evidence",
+            "obligations"
+          ],
+          "title": "Finding",
+          "type": "object"
+        },
+        "Observation": {
+          "additionalProperties": false,
+          "properties": {
+            "part_id": {
+              "title": "Part Id",
+              "type": "string"
+            },
+            "note": {
+              "minLength": 1,
+              "title": "Note",
+              "type": "string"
+            }
+          },
+          "required": [
+            "part_id",
+            "note"
+          ],
+          "title": "Observation",
+          "type": "object"
+        },
+        "QuestionDisposition": {
+          "additionalProperties": false,
+          "properties": {
+            "question_id": {
+              "title": "Question Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "addressed",
+                "partially_addressed",
+                "not_addressed",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "support": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Support",
+              "type": "array"
+            },
+            "counterevidence": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Counterevidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "question_id",
+            "status",
+            "reason",
+            "support",
+            "counterevidence"
+          ],
+          "title": "QuestionDisposition",
+          "type": "object"
+        },
+        "SourceQuote": {
+          "additionalProperties": false,
+          "properties": {
+            "part_id": {
+              "title": "Part Id",
+              "type": "string"
+            },
+            "quote": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Prefer null to bind the complete original part without copying it. Optional exact substring only.",
+              "title": "Quote"
+            },
+            "start_char": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Start Char"
+            }
+          },
+          "required": [
+            "part_id"
+          ],
+          "title": "SourceQuote",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "title": "Observations",
+          "type": "array"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/Finding"
+          },
+          "title": "Findings",
+          "type": "array"
+        },
+        "fields": {
+          "items": {
+            "$ref": "#/$defs/FieldAssessment"
+          },
+          "title": "Fields",
+          "type": "array"
+        },
+        "questions": {
+          "items": {
+            "$ref": "#/$defs/QuestionDisposition"
+          },
+          "title": "Questions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "observations",
+        "findings",
+        "fields",
+        "questions"
+      ],
+      "title": "ReaderSubmission",
+      "type": "object"
+    },
+    "DraftSubmission": {
+      "$defs": {
+        "ComparisonCell": {
+          "additionalProperties": false,
+          "properties": {
+            "paper_id": {
+              "title": "Paper Id",
+              "type": "string"
+            },
+            "dimension": {
+              "title": "Dimension",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "paper_id",
+            "dimension",
+            "claim_ids"
+          ],
+          "title": "ComparisonCell",
+          "type": "object"
+        },
+        "DraftClaim": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "evidence_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Evidence Refs",
+              "type": "array"
+            },
+            "question_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Question Ids",
+              "type": "array"
+            },
+            "attribution": {
+              "enum": [
+                "source_finding",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "scope": {
+              "enum": [
+                "individual",
+                "subset",
+                "corpus"
+              ],
+              "title": "Scope",
+              "type": "string"
+            },
+            "population_paper_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Population Paper Ids",
+              "type": "array"
+            },
+            "premise_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Premise Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "text",
+            "evidence_refs",
+            "question_ids",
+            "attribution",
+            "scope",
+            "population_paper_ids"
+          ],
+          "title": "DraftClaim",
+          "type": "object"
+        },
+        "RetentionDisposition": {
+          "additionalProperties": false,
+          "properties": {
+            "obligation_id": {
+              "title": "Obligation Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Claim Ids",
+              "type": "array"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "obligation_id",
+            "status",
+            "claim_ids",
+            "reason"
+          ],
+          "title": "RetentionDisposition",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/DraftClaim"
+          },
+          "minItems": 1,
+          "title": "Claims",
+          "type": "array"
+        },
+        "retention": {
+          "items": {
+            "$ref": "#/$defs/RetentionDisposition"
+          },
+          "title": "Retention",
+          "type": "array"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/ComparisonCell"
+          },
+          "title": "Cells",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claims",
+        "retention",
+        "cells"
+      ],
+      "title": "DraftSubmission",
+      "type": "object"
+    },
+    "GroupedDraftSubmission": {
+      "$defs": {
+        "ComparisonCell": {
+          "additionalProperties": false,
+          "properties": {
+            "paper_id": {
+              "title": "Paper Id",
+              "type": "string"
+            },
+            "dimension": {
+              "title": "Dimension",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "paper_id",
+            "dimension",
+            "claim_ids"
+          ],
+          "title": "ComparisonCell",
+          "type": "object"
+        },
+        "DraftClaim": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "evidence_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Evidence Refs",
+              "type": "array"
+            },
+            "question_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Question Ids",
+              "type": "array"
+            },
+            "attribution": {
+              "enum": [
+                "source_finding",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "scope": {
+              "enum": [
+                "individual",
+                "subset",
+                "corpus"
+              ],
+              "title": "Scope",
+              "type": "string"
+            },
+            "population_paper_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Population Paper Ids",
+              "type": "array"
+            },
+            "premise_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Premise Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "text",
+            "evidence_refs",
+            "question_ids",
+            "attribution",
+            "scope",
+            "population_paper_ids"
+          ],
+          "title": "DraftClaim",
+          "type": "object"
+        },
+        "RetentionGroup": {
+          "additionalProperties": false,
+          "properties": {
+            "obligation_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Obligation Ids",
+              "type": "array"
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Claim Ids",
+              "type": "array"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "obligation_ids",
+            "status",
+            "claim_ids",
+            "reason"
+          ],
+          "title": "RetentionGroup",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/DraftClaim"
+          },
+          "minItems": 1,
+          "title": "Claims",
+          "type": "array"
+        },
+        "retention_groups": {
+          "items": {
+            "$ref": "#/$defs/RetentionGroup"
+          },
+          "title": "Retention Groups",
+          "type": "array"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/ComparisonCell"
+          },
+          "title": "Cells",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claims",
+        "retention_groups",
+        "cells"
+      ],
+      "title": "GroupedDraftSubmission",
+      "type": "object"
+    },
+    "ProofSubmission": {
+      "$defs": {
+        "ProofIssue": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ProofIssue",
+          "type": "object"
+        },
+        "UnitVerdict": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "verdict": {
+              "enum": [
+                "passed",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Verdict",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_id",
+            "verdict",
+            "reason"
+          ],
+          "title": "UnitVerdict",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "checked": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Checked",
+          "type": "object"
+        },
+        "verdicts": {
+          "description": "One verdict for each assigned claim and obligation. Other checked dimensions need no separate verdict. Empty for integration/root tasks with no assigned claims or obligations.",
+          "items": {
+            "$ref": "#/$defs/UnitVerdict"
+          },
+          "title": "Verdicts",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "needs_revision",
+            "unresolved"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ProofIssue"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "checked",
+        "verdicts",
+        "status",
+        "reason",
+        "issues"
+      ],
+      "title": "ProofSubmission",
+      "type": "object"
+    },
+    "ProofArguments": {
+      "$defs": {
+        "ProofIssue": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ProofIssue",
+          "type": "object"
+        },
+        "ProofSubmission": {
+          "additionalProperties": false,
+          "properties": {
+            "checked": {
+              "additionalProperties": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "title": "Checked",
+              "type": "object"
+            },
+            "verdicts": {
+              "description": "One verdict for each assigned claim and obligation. Other checked dimensions need no separate verdict. Empty for integration/root tasks with no assigned claims or obligations.",
+              "items": {
+                "$ref": "#/$defs/UnitVerdict"
+              },
+              "title": "Verdicts",
+              "type": "array"
+            },
+            "status": {
+              "enum": [
+                "passed",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/ProofIssue"
+              },
+              "title": "Issues",
+              "type": "array"
+            }
+          },
+          "required": [
+            "checked",
+            "verdicts",
+            "status",
+            "reason",
+            "issues"
+          ],
+          "title": "ProofSubmission",
+          "type": "object"
+        },
+        "UnitVerdict": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "verdict": {
+              "enum": [
+                "passed",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Verdict",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_id",
+            "verdict",
+            "reason"
+          ],
+          "title": "UnitVerdict",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/ProofSubmission"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "ProofArguments",
+      "type": "object"
+    },
+    "PaperReviewSubmissionV2": {
+      "$defs": {
+        "MinimumUnitCheckV2": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_unit_id": {
+              "title": "Minimum Unit Id",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "$ref": "#/$defs/SourceObservationV2"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "source_relation": {
+              "enum": [
+                "direct",
+                "association",
+                "causal",
+                "conditional",
+                "not_reported",
+                "contradicted",
+                "uncertain"
+              ],
+              "title": "Source Relation",
+              "type": "string"
+            },
+            "claim_relation": {
+              "minLength": 1,
+              "title": "Claim Relation",
+              "type": "string"
+            },
+            "qualification_check": {
+              "minLength": 1,
+              "title": "Qualification Check",
+              "type": "string"
+            },
+            "conclusion": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Conclusion",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "minimum_unit_id",
+            "observations",
+            "source_relation",
+            "claim_relation",
+            "qualification_check",
+            "conclusion",
+            "reason"
+          ],
+          "title": "MinimumUnitCheckV2",
+          "type": "object"
+        },
+        "OmissionV2": {
+          "additionalProperties": false,
+          "properties": {
+            "source_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Source Refs",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "importance": {
+              "minLength": 1,
+              "title": "Importance",
+              "type": "string"
+            },
+            "affected_target_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Affected Target Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "source_refs",
+            "description",
+            "importance",
+            "affected_target_ids"
+          ],
+          "title": "OmissionV2",
+          "type": "object"
+        },
+        "ReviewIssueV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ReviewIssueV2",
+          "type": "object"
+        },
+        "SourceObservationV2": {
+          "additionalProperties": false,
+          "properties": {
+            "source_ref": {
+              "title": "Source Ref",
+              "type": "string"
+            },
+            "quote": {
+              "minLength": 1,
+              "title": "Quote",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_ref",
+            "quote"
+          ],
+          "title": "SourceObservationV2",
+          "type": "object"
+        },
+        "UnitReviewV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "claim_checks": {
+              "items": {
+                "$ref": "#/$defs/MinimumUnitCheckV2"
+              },
+              "title": "Claim Checks",
+              "type": "array"
+            }
+          },
+          "required": [
+            "unit_id",
+            "status",
+            "reason"
+          ],
+          "title": "UnitReviewV2",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "unit_verdicts": {
+          "items": {
+            "$ref": "#/$defs/UnitReviewV2"
+          },
+          "title": "Unit Verdicts",
+          "type": "array"
+        },
+        "new_omissions": {
+          "items": {
+            "$ref": "#/$defs/OmissionV2"
+          },
+          "title": "New Omissions",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ReviewIssueV2"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "unit_verdicts",
+        "new_omissions",
+        "issues"
+      ],
+      "title": "PaperReviewSubmissionV2",
+      "type": "object"
+    },
+    "SectionReviewSubmissionV2": {
+      "$defs": {
+        "InferenceClauseV2": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_unit_id": {
+              "minLength": 1,
+              "title": "Minimum Unit Id",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "$ref": "#/$defs/PremiseObservationV2"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "premise_relation": {
+              "enum": [
+                "direct",
+                "association",
+                "causal",
+                "conditional",
+                "not_reported",
+                "contradicted",
+                "uncertain"
+              ],
+              "title": "Premise Relation",
+              "type": "string"
+            },
+            "inference_relation": {
+              "minLength": 1,
+              "title": "Inference Relation",
+              "type": "string"
+            },
+            "qualification_check": {
+              "minLength": 1,
+              "title": "Qualification Check",
+              "type": "string"
+            },
+            "conclusion": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Conclusion",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "minimum_unit_id",
+            "observations",
+            "premise_relation",
+            "inference_relation",
+            "qualification_check",
+            "conclusion",
+            "reason"
+          ],
+          "title": "InferenceClauseV2",
+          "type": "object"
+        },
+        "PremiseObservationV2": {
+          "additionalProperties": false,
+          "properties": {
+            "premise_claim_id": {
+              "title": "Premise Claim Id",
+              "type": "string"
+            },
+            "quote": {
+              "minLength": 1,
+              "title": "Quote",
+              "type": "string"
+            }
+          },
+          "required": [
+            "premise_claim_id",
+            "quote"
+          ],
+          "title": "PremiseObservationV2",
+          "type": "object"
+        },
+        "ReviewIssueV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ReviewIssueV2",
+          "type": "object"
+        },
+        "SectionUnitV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "inference_checks": {
+              "items": {
+                "$ref": "#/$defs/InferenceClauseV2"
+              },
+              "title": "Inference Checks",
+              "type": "array"
+            }
+          },
+          "required": [
+            "unit_id",
+            "status",
+            "reason"
+          ],
+          "title": "SectionUnitV2",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "unit_verdicts": {
+          "items": {
+            "$ref": "#/$defs/SectionUnitV2"
+          },
+          "title": "Unit Verdicts",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ReviewIssueV2"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "unit_verdicts",
+        "issues"
+      ],
+      "title": "SectionReviewSubmissionV2",
+      "type": "object"
+    },
+    "ClosedSubmission": {
+      "$defs": {
+        "Issue": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "Issue",
+          "type": "object"
+        },
+        "MinimumCheck": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_unit_id": {
+              "minLength": 1,
+              "title": "Minimum Unit Id",
+              "type": "string"
+            },
+            "conclusion": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved",
+                "unsupported"
+              ],
+              "title": "Conclusion",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "source_relation": {
+              "enum": [
+                "direct",
+                "association",
+                "causal",
+                "conditional",
+                "not_reported",
+                "contradicted",
+                "uncertain"
+              ],
+              "title": "Source Relation",
+              "type": "string"
+            },
+            "claim_relation": {
+              "minLength": 1,
+              "title": "Claim Relation",
+              "type": "string"
+            },
+            "qualification_check": {
+              "minLength": 1,
+              "title": "Qualification Check",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "missing_components": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Missing Components",
+              "type": "array"
+            }
+          },
+          "required": [
+            "minimum_unit_id",
+            "conclusion",
+            "observations",
+            "source_relation",
+            "claim_relation",
+            "qualification_check",
+            "reason"
+          ],
+          "title": "MinimumCheck",
+          "type": "object"
+        },
+        "UnitVerdict": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "minLength": 1,
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved",
+                "unsupported"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "minimum_checks": {
+              "items": {
+                "$ref": "#/$defs/MinimumCheck"
+              },
+              "title": "Minimum Checks",
+              "type": "array"
+            },
+            "missing_components": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Missing Components",
+              "type": "array"
+            }
+          },
+          "required": [
+            "unit_id",
+            "status",
+            "reason",
+            "observations"
+          ],
+          "title": "UnitVerdict",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "unit_verdicts": {
+          "items": {
+            "$ref": "#/$defs/UnitVerdict"
+          },
+          "title": "Unit Verdicts",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/Issue"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "unit_verdicts"
+      ],
+      "title": "ClosedSubmission",
+      "type": "object"
+    },
+    "reader_submit_tool_arguments": {
+      "$defs": {
+        "FieldAssessment": {
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "enum": [
+                "research_question",
+                "contributions",
+                "method",
+                "evaluation",
+                "results",
+                "limitations",
+                "conditions",
+                "relevance",
+                "unexpected_findings"
+              ],
+              "title": "Field",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "extracted",
+                "not_reported",
+                "not_applicable",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "field",
+            "status",
+            "reason"
+          ],
+          "title": "FieldAssessment",
+          "type": "object"
+        },
+        "Finding": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "field": {
+              "enum": [
+                "research_question",
+                "contributions",
+                "method",
+                "evaluation",
+                "results",
+                "limitations",
+                "conditions",
+                "relevance",
+                "unexpected_findings"
+              ],
+              "title": "Field",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "attribution": {
+              "enum": [
+                "author_result",
+                "author_limitation",
+                "secondary_report",
+                "context",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/SourceQuote"
+              },
+              "minItems": 1,
+              "title": "Evidence",
+              "type": "array"
+            },
+            "obligations": {
+              "description": "Required assessment: list all applicable retention categories; use [] only when none apply.",
+              "items": {
+                "enum": [
+                  "adverse_result",
+                  "null_result",
+                  "persistent_failure",
+                  "missing_measurement",
+                  "critical_limitation",
+                  "applicability"
+                ],
+                "type": "string"
+              },
+              "title": "Obligations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "field",
+            "text",
+            "attribution",
+            "evidence",
+            "obligations"
+          ],
+          "title": "Finding",
+          "type": "object"
+        },
+        "Observation": {
+          "additionalProperties": false,
+          "properties": {
+            "part_id": {
+              "title": "Part Id",
+              "type": "string"
+            },
+            "note": {
+              "minLength": 1,
+              "title": "Note",
+              "type": "string"
+            }
+          },
+          "required": [
+            "part_id",
+            "note"
+          ],
+          "title": "Observation",
+          "type": "object"
+        },
+        "QuestionDisposition": {
+          "additionalProperties": false,
+          "properties": {
+            "question_id": {
+              "title": "Question Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "addressed",
+                "partially_addressed",
+                "not_addressed",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "support": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Support",
+              "type": "array"
+            },
+            "counterevidence": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Counterevidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "question_id",
+            "status",
+            "reason",
+            "support",
+            "counterevidence"
+          ],
+          "title": "QuestionDisposition",
+          "type": "object"
+        },
+        "ReaderSubmission": {
+          "additionalProperties": false,
+          "properties": {
+            "observations": {
+              "items": {
+                "$ref": "#/$defs/Observation"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "findings": {
+              "items": {
+                "$ref": "#/$defs/Finding"
+              },
+              "title": "Findings",
+              "type": "array"
+            },
+            "fields": {
+              "items": {
+                "$ref": "#/$defs/FieldAssessment"
+              },
+              "title": "Fields",
+              "type": "array"
+            },
+            "questions": {
+              "items": {
+                "$ref": "#/$defs/QuestionDisposition"
+              },
+              "title": "Questions",
+              "type": "array"
+            }
+          },
+          "required": [
+            "observations",
+            "findings",
+            "fields",
+            "questions"
+          ],
+          "title": "ReaderSubmission",
+          "type": "object"
+        },
+        "SourceQuote": {
+          "additionalProperties": false,
+          "properties": {
+            "part_id": {
+              "title": "Part Id",
+              "type": "string"
+            },
+            "quote": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Prefer null to bind the complete original part without copying it. Optional exact substring only.",
+              "title": "Quote"
+            },
+            "start_char": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Start Char"
+            }
+          },
+          "required": [
+            "part_id"
+          ],
+          "title": "SourceQuote",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/ReaderSubmission"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "ReaderArguments",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "paper_card_grouped_tool_arguments": {
+      "$defs": {
+        "CardGroupedDraftSubmission": {
+          "additionalProperties": false,
+          "properties": {
+            "claims": {
+              "items": {
+                "$ref": "#/$defs/DraftClaim"
+              },
+              "maxItems": 12,
+              "minItems": 1,
+              "title": "Claims",
+              "type": "array"
+            },
+            "retention_groups": {
+              "items": {
+                "$ref": "#/$defs/RetentionGroup"
+              },
+              "title": "Retention Groups",
+              "type": "array"
+            },
+            "cells": {
+              "items": {
+                "$ref": "#/$defs/ComparisonCell"
+              },
+              "title": "Cells",
+              "type": "array"
+            }
+          },
+          "required": [
+            "claims",
+            "retention_groups",
+            "cells"
+          ],
+          "title": "CardGroupedDraftSubmission",
+          "type": "object"
+        },
+        "ComparisonCell": {
+          "additionalProperties": false,
+          "properties": {
+            "paper_id": {
+              "title": "Paper Id",
+              "type": "string"
+            },
+            "dimension": {
+              "title": "Dimension",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "paper_id",
+            "dimension",
+            "claim_ids"
+          ],
+          "title": "ComparisonCell",
+          "type": "object"
+        },
+        "DraftClaim": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "evidence_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Evidence Refs",
+              "type": "array"
+            },
+            "question_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Question Ids",
+              "type": "array"
+            },
+            "attribution": {
+              "enum": [
+                "source_finding",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "scope": {
+              "enum": [
+                "individual",
+                "subset",
+                "corpus"
+              ],
+              "title": "Scope",
+              "type": "string"
+            },
+            "population_paper_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Population Paper Ids",
+              "type": "array"
+            },
+            "premise_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Premise Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "text",
+            "evidence_refs",
+            "question_ids",
+            "attribution",
+            "scope",
+            "population_paper_ids"
+          ],
+          "title": "DraftClaim",
+          "type": "object"
+        },
+        "RetentionGroup": {
+          "additionalProperties": false,
+          "properties": {
+            "obligation_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Obligation Ids",
+              "type": "array"
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Claim Ids",
+              "type": "array"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "obligation_ids",
+            "status",
+            "claim_ids",
+            "reason"
+          ],
+          "title": "RetentionGroup",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/CardGroupedDraftSubmission"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "CardGroupedDraftArguments",
+      "type": "object"
+    },
+    "comparison_or_synthesis_grouped_tool_arguments": {
+      "$defs": {
+        "ComparisonCell": {
+          "additionalProperties": false,
+          "properties": {
+            "paper_id": {
+              "title": "Paper Id",
+              "type": "string"
+            },
+            "dimension": {
+              "title": "Dimension",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "paper_id",
+            "dimension",
+            "claim_ids"
+          ],
+          "title": "ComparisonCell",
+          "type": "object"
+        },
+        "DraftClaim": {
+          "additionalProperties": false,
+          "properties": {
+            "local_id": {
+              "minLength": 1,
+              "title": "Local Id",
+              "type": "string"
+            },
+            "text": {
+              "minLength": 1,
+              "title": "Text",
+              "type": "string"
+            },
+            "evidence_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Evidence Refs",
+              "type": "array"
+            },
+            "question_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Question Ids",
+              "type": "array"
+            },
+            "attribution": {
+              "enum": [
+                "source_finding",
+                "analyst_inference"
+              ],
+              "title": "Attribution",
+              "type": "string"
+            },
+            "scope": {
+              "enum": [
+                "individual",
+                "subset",
+                "corpus"
+              ],
+              "title": "Scope",
+              "type": "string"
+            },
+            "population_paper_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Population Paper Ids",
+              "type": "array"
+            },
+            "premise_claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Premise Claim Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "local_id",
+            "text",
+            "evidence_refs",
+            "question_ids",
+            "attribution",
+            "scope",
+            "population_paper_ids"
+          ],
+          "title": "DraftClaim",
+          "type": "object"
+        },
+        "GroupedDraftSubmission": {
+          "additionalProperties": false,
+          "properties": {
+            "claims": {
+              "items": {
+                "$ref": "#/$defs/DraftClaim"
+              },
+              "minItems": 1,
+              "title": "Claims",
+              "type": "array"
+            },
+            "retention_groups": {
+              "items": {
+                "$ref": "#/$defs/RetentionGroup"
+              },
+              "title": "Retention Groups",
+              "type": "array"
+            },
+            "cells": {
+              "items": {
+                "$ref": "#/$defs/ComparisonCell"
+              },
+              "title": "Cells",
+              "type": "array"
+            }
+          },
+          "required": [
+            "claims",
+            "retention_groups",
+            "cells"
+          ],
+          "title": "GroupedDraftSubmission",
+          "type": "object"
+        },
+        "RetentionGroup": {
+          "additionalProperties": false,
+          "properties": {
+            "obligation_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Obligation Ids",
+              "type": "array"
+            },
+            "status": {
+              "enum": [
+                "included",
+                "excluded"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "claim_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Claim Ids",
+              "type": "array"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "obligation_ids",
+            "status",
+            "claim_ids",
+            "reason"
+          ],
+          "title": "RetentionGroup",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "data": {
+          "$ref": "#/$defs/GroupedDraftSubmission"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "GroupedDraftArguments",
+      "type": "object"
+    },
+    "paper_whole_unit_submission": {
+      "$defs": {
+        "MinimumUnitCheckV2": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_unit_id": {
+              "title": "Minimum Unit Id",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "$ref": "#/$defs/SourceObservationV2"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "source_relation": {
+              "enum": [
+                "direct",
+                "association",
+                "causal",
+                "conditional",
+                "not_reported",
+                "contradicted",
+                "uncertain"
+              ],
+              "title": "Source Relation",
+              "type": "string"
+            },
+            "claim_relation": {
+              "minLength": 1,
+              "title": "Claim Relation",
+              "type": "string"
+            },
+            "qualification_check": {
+              "minLength": 1,
+              "title": "Qualification Check",
+              "type": "string"
+            },
+            "conclusion": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Conclusion",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "minimum_unit_id",
+            "observations",
+            "source_relation",
+            "claim_relation",
+            "qualification_check",
+            "conclusion",
+            "reason"
+          ],
+          "title": "MinimumUnitCheckV2",
+          "type": "object"
+        },
+        "OmissionV2": {
+          "additionalProperties": false,
+          "properties": {
+            "source_refs": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Source Refs",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "importance": {
+              "minLength": 1,
+              "title": "Importance",
+              "type": "string"
+            },
+            "affected_target_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Affected Target Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "source_refs",
+            "description",
+            "importance",
+            "affected_target_ids"
+          ],
+          "title": "OmissionV2",
+          "type": "object"
+        },
+        "ReviewIssueV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ReviewIssueV2",
+          "type": "object"
+        },
+        "SourceObservationV2": {
+          "title": "SourceObservationV2",
+          "type": "object",
+          "properties": {
+            "selector_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "selector_id"
+          ],
+          "additionalProperties": false
+        },
+        "UnitReviewV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "claim_checks": {
+              "items": {
+                "$ref": "#/$defs/MinimumUnitCheckV2"
+              },
+              "title": "Claim Checks",
+              "type": "array"
+            }
+          },
+          "required": [
+            "unit_id",
+            "status",
+            "reason"
+          ],
+          "title": "UnitReviewV2",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "unit_verdicts": {
+          "items": {
+            "$ref": "#/$defs/UnitReviewV2"
+          },
+          "title": "Unit Verdicts",
+          "type": "array"
+        },
+        "new_omissions": {
+          "items": {
+            "$ref": "#/$defs/OmissionV2"
+          },
+          "title": "New Omissions",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ReviewIssueV2"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "unit_verdicts",
+        "new_omissions",
+        "issues"
+      ],
+      "title": "PaperReviewSubmissionV2",
+      "type": "object"
+    },
+    "section_whole_unit_submission": {
+      "$defs": {
+        "InferenceClauseV2": {
+          "additionalProperties": false,
+          "properties": {
+            "minimum_unit_id": {
+              "minLength": 1,
+              "title": "Minimum Unit Id",
+              "type": "string"
+            },
+            "observations": {
+              "items": {
+                "$ref": "#/$defs/PremiseObservationV2"
+              },
+              "title": "Observations",
+              "type": "array"
+            },
+            "premise_relation": {
+              "enum": [
+                "direct",
+                "association",
+                "causal",
+                "conditional",
+                "not_reported",
+                "contradicted",
+                "uncertain"
+              ],
+              "title": "Premise Relation",
+              "type": "string"
+            },
+            "inference_relation": {
+              "minLength": 1,
+              "title": "Inference Relation",
+              "type": "string"
+            },
+            "qualification_check": {
+              "minLength": 1,
+              "title": "Qualification Check",
+              "type": "string"
+            },
+            "conclusion": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Conclusion",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            }
+          },
+          "required": [
+            "minimum_unit_id",
+            "observations",
+            "premise_relation",
+            "inference_relation",
+            "qualification_check",
+            "conclusion",
+            "reason"
+          ],
+          "title": "InferenceClauseV2",
+          "type": "object"
+        },
+        "PremiseObservationV2": {
+          "title": "PremiseObservationV2",
+          "type": "object",
+          "properties": {
+            "selector_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "selector_id"
+          ],
+          "additionalProperties": false
+        },
+        "ReviewIssueV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_ids": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Unit Ids",
+              "type": "array"
+            },
+            "description": {
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "correction": {
+              "minLength": 1,
+              "title": "Correction",
+              "type": "string"
+            }
+          },
+          "required": [
+            "unit_ids",
+            "description",
+            "correction"
+          ],
+          "title": "ReviewIssueV2",
+          "type": "object"
+        },
+        "SectionUnitV2": {
+          "additionalProperties": false,
+          "properties": {
+            "unit_id": {
+              "title": "Unit Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "needs_revision",
+                "unresolved"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "inference_checks": {
+              "items": {
+                "$ref": "#/$defs/InferenceClauseV2"
+              },
+              "title": "Inference Checks",
+              "type": "array"
+            }
+          },
+          "required": [
+            "unit_id",
+            "status",
+            "reason"
+          ],
+          "title": "SectionUnitV2",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "unit_verdicts": {
+          "items": {
+            "$ref": "#/$defs/SectionUnitV2"
+          },
+          "title": "Unit Verdicts",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ReviewIssueV2"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "unit_verdicts",
+        "issues"
+      ],
+      "title": "SectionReviewSubmissionV2",
+      "type": "object"
+    }
+  },
+  "source_files_sha256": {
+    "scripts/install_skills.py": "15b85837475277083d118d93b680e5df42d0c93fa4cb530dc16e7d2bcaa11945",
+    "skills/literature-review/scripts/install_skills.py": "ca188f4e57a757e86c5d254f17964b617e50446c9feb3a60af98674929df3d7e",
+    "skills/analyze-paper/SKILL.md": "e6b2d852ef72a9f318953c42ae0adecf2076d883ea8eea873f6bf3c7f4df748a",
+    "skills/compare-papers/SKILL.md": "94a1432dc4b148d593ea0a71c07e2adac457e62030a2aa4fa2f0e9ae3dd14c6e",
+    "skills/write-review/SKILL.md": "15c0c95b91ee6e873236a93edbac1bf03a785b31bc0f8312ae9b39c284028b7e",
+    "skills/verify-citations/SKILL.md": "63af3fa0b3f5ee3a40655ba7c51fe8efb0700351ef11e0c49abb0e7c52373ba3",
+    "skills/literature-review/SKILL.md": "857f7776eaf7e02b033f204b76c205991a85a88021ee369da3895e76091d2e74",
+    "skills/literature-review/scripts/runtime/litreview_core/native_task.py": "2226398baf493ad82c6141db8c08118d63ebd2e4d27cc629c60a7b343113b0ae",
+    "skills/literature-review/scripts/runtime/litreview_core/native_review.py": "8579f25899f552277ab7a8ad882fd814457d10d1db366fcad25b2df2ccc3b271",
+    "skills/literature-review/scripts/runtime/litreview_core/scientific_records.py": "76353c51e504377aa0fe58f92944fb6568066770c8411f262e925ee747a8b79a",
+    "skills/literature-review/scripts/runtime/litreview_core/draft_worker.py": "a1206cc9fd14b222aedfdb003c619557e49ed144557e974cfc5db9d4deb94c01",
+    "skills/literature-review/scripts/runtime/litreview_core/draft_submission_wire.py": "565b37928475a842a26cf7f812e00ea2142669a8608a7f9bbba540b6f074fcd5",
+    "skills/literature-review/scripts/runtime/litreview_core/review_artifacts.py": "003a029c3d92d001cb060a5cdd1dafcdb36f07bf3e9d5af184e9cc6c5728c1f1",
+    "skills/literature-review/scripts/runtime/litreview_core/proof_worker.py": "21c955e8c9a49aa359691214d7d8cfa173d22a5859abc30d6e7f1d97adb16ea8",
+    "skills/literature-review/scripts/runtime/litreview_core/paper_review_v2.py": "a6fc154ecf17138eac7f36047f2fe0b8315912a5ebd7406822db6031938da107",
+    "skills/literature-review/scripts/runtime/litreview_core/section_review_v2.py": "dd7d0f9205a8e049d79403bb3fe15254238082bd29ac52f619442cdaa61c1519",
+    "skills/literature-review/scripts/runtime/litreview_core/closed_scientific_checks.py": "f625f3175afb5487575e39c33faa5aab085f3ea38fcd2e350e559be3215a1393",
+    "skills/literature-review/scripts/runtime/litreview_core/review_observation_selectors.py": "87ef3d2d4032d07fca25bc1bfdd6f915dc2df581d402c12b7b5735b3674f9b56",
+    "skills/literature-review/scripts/runtime/litreview_core/native_agent.py": "af4fc92ba5ee8e9f8f570d90d2d997e9d0b05667848aa78bbf80f06c0c54fb0e"
+  },
+  "inspected_environment_versions": {
+    "deepagents": "0.7.15",
+    "langchain": "1.4.1",
+    "langchain-core": "1.6.3",
+    "langgraph": "1.2.11",
+    "langchain-openrouter": "0.2.8",
+    "httpx": "0.28.1",
+    "pydantic": "2.12.5",
+    "tokenizers": "0.23.3",
+    "psutil": "7.2.2"
+  }
+}

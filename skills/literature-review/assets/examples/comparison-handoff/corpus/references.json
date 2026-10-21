@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "source_policy": "corpus_only",
+  "documents": [
+    {
+      "document_id": "document_b47ef74f953b903937d6c120",
+      "paper_id": "paper_443053ac1197b89d97274465",
+      "metadata": {
+        "title": "試驗 A"
+      },
+      "metadata_provenance": {
+        "title": {
+          "origin": "provided_text",
+          "block_id": "block_02666328e0fc965a4f72b14e",
+          "external_verification": "not_checked"
+        }
+      }
+    },
+    {
+      "document_id": "document_d7e3aa18718719a68070e279",
+      "paper_id": "paper_42a3944a455b53063794600f",
+      "metadata": {
+        "title": "試驗 B"
+      },
+      "metadata_provenance": {
+        "title": {
+          "origin": "provided_text",
+          "block_id": "block_ad57a61dd311ce30d1aaf392",
+          "external_verification": "not_checked"
+        }
+      }
+    }
+  ]
+}

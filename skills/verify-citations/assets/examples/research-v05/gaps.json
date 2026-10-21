@@ -1,0 +1,18 @@
+[
+  {
+    "gap_id": "accuracy_x",
+    "anchor": "{{gap:accuracy_x}}",
+    "question": "資料集 X 上方法 A 的準確率與不確定性為何？",
+    "terms": ["accuracy", "X", "方法 A", "confidence"],
+    "requirements": {"dataset": "X", "metric": "accuracy", "unit": "%"},
+    "expects_numeric": true
+  },
+  {
+    "gap_id": "p99",
+    "anchor": "{{gap:p99}}",
+    "question": "提供文獻是否報告與部署條件相符的 P99 延遲？",
+    "terms": ["P99", "tail latency", "部署"],
+    "requirements": {"metric": "p99_latency", "unit": "ms"},
+    "expects_numeric": true
+  }
+]

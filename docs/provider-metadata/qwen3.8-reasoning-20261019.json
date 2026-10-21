@@ -1,0 +1,44 @@
+﻿{
+    "source":  "https://openrouter.ai/api/v1/models",
+    "fetched_utc":  "2026-10-19T21:22:50.0669262Z",
+    "model":  {
+                  "id":  "qwen/qwen3.8-27b",
+                  "context_length":  1000000,
+                  "reasoning":  {
+                                    "mandatory":  false,
+                                    "default_enabled":  true,
+                                    "supported_efforts":  [
+                                                              "xhigh",
+                                                              "medium",
+                                                              "low",
+                                                              "none"
+                                                          ],
+                                    "default_effort":  "xhigh"
+                                },
+                  "supported_parameters":  [
+                                               "frequency_penalty",
+                                               "include_reasoning",
+                                               "logit_bias",
+                                               "logprobs",
+                                               "max_tokens",
+                                               "min_p",
+                                               "presence_penalty",
+                                               "reasoning",
+                                               "reasoning_effort",
+                                               "repetition_penalty",
+                                               "response_format",
+                                               "seed",
+                                               "stop",
+                                               "structured_outputs",
+                                               "temperature",
+                                               "tool_choice",
+                                               "tools",
+                                               "top_a",
+                                               "top_k",
+                                               "top_logprobs",
+                                               "top_p"
+                                           ]
+              },
+    "runtime_context_ceiling_unchanged":  200000,
+    "interpretation":  "supports_max_tokens is absent; no hard reasoning-token budget is established by this metadata. Effort low is not an observed or guaranteed token cap."
+}

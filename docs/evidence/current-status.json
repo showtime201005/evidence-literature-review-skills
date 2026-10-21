@@ -1,0 +1,165 @@
+{
+  "schema": "literature-review-development-status/1",
+  "snapshot_date": "2026-10-21",
+  "status": "not_accepted",
+  "model": "qwen/qwen3.8-27b",
+  "hundred_paper_90_minute_acceptance_passed": false,
+  "latest_cold_run": {
+    "papers": 2,
+    "passed": false,
+    "quality_validated": false,
+    "publication_verified": false,
+    "protocol_completed_experimental": false,
+    "elapsed_seconds": 412.9219999999041,
+    "within_deadline": true,
+    "error": {
+      "type": "RuntimeError",
+      "message": "Shared semantic repair budget exhausted before downstream writing"
+    },
+    "repair_rounds_used": 2,
+    "repair_history": [
+      {
+        "stage": "v2-cards",
+        "status": "needs_revision",
+        "snapshot_hash": "1d29d83dff3036b43be14d4af6cd9d6bc7df066f29a0abb46b30c07f7dcae17a",
+        "repair_rounds_used": 0,
+        "targets": [
+          "card/s01"
+        ]
+      },
+      {
+        "stage": "v2-cards",
+        "status": "needs_revision",
+        "snapshot_hash": "ccc531f4edf8dd64fd38759dbcaa6c18af387573e05ec04820b97f576d10fcec",
+        "repair_rounds_used": 1,
+        "targets": [
+          "card/s08"
+        ]
+      },
+      {
+        "stage": "v2-cards",
+        "status": "needs_revision",
+        "snapshot_hash": "159fce2573fe8f809f7108eb4af1838ecde5109e6e4b59aade1a12cec88e5571",
+        "repair_rounds_used": 2,
+        "targets": [
+          "card/s01"
+        ]
+      }
+    ]
+  },
+  "stages": [
+    {
+      "stage": "v2-reading",
+      "started_after_seconds": 0.4369999999180436,
+      "elapsed_seconds": 37.54700000002049,
+      "status": "completed"
+    },
+    {
+      "stage": "v2-cards-draft",
+      "started_after_seconds": 38.01599999994505,
+      "elapsed_seconds": 35.59299999999348,
+      "status": "completed"
+    },
+    {
+      "stage": "v2-cards-closed-0",
+      "started_after_seconds": 74.71899999992456,
+      "elapsed_seconds": 61.0,
+      "status": "failed"
+    },
+    {
+      "stage": "v2-cards-revision-0",
+      "started_after_seconds": 135.73399999993853,
+      "elapsed_seconds": 114.82799999997951,
+      "status": "completed"
+    },
+    {
+      "stage": "v2-cards-closed-1",
+      "started_after_seconds": 251.21899999992456,
+      "elapsed_seconds": 82.09299999999348,
+      "status": "failed"
+    },
+    {
+      "stage": "v2-cards-revision-1",
+      "started_after_seconds": 333.34399999992456,
+      "elapsed_seconds": 15.077999999979511,
+      "status": "completed"
+    },
+    {
+      "stage": "v2-cards-closed-2",
+      "started_after_seconds": 349.25,
+      "elapsed_seconds": 56.15599999995902,
+      "status": "failed"
+    }
+  ],
+  "throughput": {
+    "elapsed_seconds": 412.563,
+    "deadline_seconds": 1194.6260000000475,
+    "deadline_exceeded": false,
+    "target_met": false,
+    "pipeline_complete": false,
+    "deadline_policy": "hard admission deadline",
+    "input_estimator": "injected complete-request tokenizer adapter; accuracy depends on adapter",
+    "active_requests": 0,
+    "active_reserved_tokens": 0,
+    "peak_active_requests": 16,
+    "configured_workers": 16,
+    "logical_workers": 16,
+    "transport_retries": 0,
+    "adaptive_events": [],
+    "peak_reserved_tokens": 415301,
+    "admitted_requests": 141,
+    "completed_requests": 141,
+    "failed_requests": 0,
+    "total_queue_wait_seconds": 0.0,
+    "actual_prompt_tokens": 1215366,
+    "actual_completion_tokens": 112112,
+    "actual_usage_tpm": 193058.22,
+    "reserved_tokens_are_not_actual_usage": true,
+    "configured_rpm": null,
+    "configured_tpm": null
+  },
+  "resources": {
+    "measurement": "sampled peaks, including observed CLI child processes",
+    "interval_seconds": 1.0,
+    "logical_cpus": 8,
+    "peak_process_tree_rss_bytes": 304340992,
+    "peak_host_cpu_percent": 52.5,
+    "peak_process_cpu_percent_of_machine": 12.6875,
+    "minimum_host_available_bytes": 13602414592,
+    "low_memory_samples": 0
+  },
+  "cost": {
+    "known_usd": 0.92735307,
+    "missing_cost_event_count": 0,
+    "event_count": 141
+  },
+  "targeted_controls": {
+    "schema": "closed-check-control-evaluation/1",
+    "elapsed_seconds": 17.983999999938533,
+    "controls_matched": 6,
+    "cases": 6,
+    "error": null,
+    "publication_verified": false,
+    "quality_validated": false,
+    "full_review_cold_acceptance": false,
+    "expected_or_host_reason_delivered_to_models": false
+  },
+  "evidence_sources": [
+    {
+      "relative_to_original_workspace": "reports/native-v2-closed2-20261020T195215Z-a584/run/review-result.json",
+      "bytes": 631776,
+      "sha256": "ec659b8b88c6c3bcee73f1188f14d07100ef9bb4429f91e1acfac2d970fb44c2"
+    },
+    {
+      "relative_to_original_workspace": "reports/closed-controls-off-20261020T194348Z-2963/control-result.json",
+      "bytes": 118300,
+      "sha256": "b0385438d467df2e1d2f48e52ecc88233886ce55184e9a38fd88cd5a2aa3a616"
+    }
+  ],
+  "limitations": [
+    "Latest source contains changes after the frozen paid cold-run installation.",
+    "Selected controls use scripted upstream producers and are not a full cold review.",
+    "No completed cold 100-paper v2 acceptance.",
+    "Raw external run directories are retained locally and are not included in this package."
+  ]
+}
