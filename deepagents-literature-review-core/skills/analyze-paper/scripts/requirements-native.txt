@@ -1,0 +1,11 @@
+# Direct runtime pins from the inspected Windows environment.
+# Full cross-platform installation acceptance remains required.
+deepagents==0.7.15
+langchain==1.4.1
+langchain-core==1.6.3
+langgraph==1.2.11
+langchain-openrouter==0.2.8
+httpx==0.28.1
+pydantic==2.12.5
+tokenizers==0.23.3
+psutil==7.2.2
